@@ -16,8 +16,8 @@ public class UserClient {
     private static final String CREATE_USER_PATH = "/users";
     private static final String GET_USER_PATH = "/users";
     private static final String DELETE_USER_PATH = "/users/{userId}";
-    private RestClient restClient;
     private final UserLayerConfig userLayerConfig;
+    private RestClient restClient;
 
     public UserClient(final UserLayerConfig userLayerConfig) {
         this.userLayerConfig = userLayerConfig;
@@ -29,7 +29,6 @@ public class UserClient {
     public Response createUser(final CreateUserRequestDTO body) {
         return restClient.POST(CREATE_USER_PATH, body);
     }
-
 
 
     public Response deleteUser(final Long userId) {

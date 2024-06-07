@@ -1,8 +1,8 @@
 package com.regression.framework.stepdefs;
 
-import com.automation.regression.context.ScenarioContext;
-import com.automation.regression.rest.ResponseErrorEnum;
-import com.automation.regression.stores.UserLayerContextStore;
+import com.regression.framework.context.ScenarioContext;
+import com.regression.framework.rest.response.ResponseErrorEnum;
+import com.regression.framework.stores.UserLayerContextStore;
 import io.cucumber.java.en.Then;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

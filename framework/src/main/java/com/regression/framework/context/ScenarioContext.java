@@ -2,6 +2,7 @@ package com.regression.framework.context;
 
 import com.regression.framework.rest.response.ResponseErrorEnum;
 import io.cucumber.spring.ScenarioScope;
+import io.restassured.response.Response;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -27,8 +28,8 @@ public class ScenarioContext {
         return response;
     }
 
-    public void storeResponse(final String response) {
-        this.response = ResponseErrorEnum.getByMessage(response);
-        ;
+    public void storeResponse(final Response response) {
+        String responseBody = response.getBody().asString();
+        this.response = ResponseErrorEnum.getByMessage(responseBody);
     }
 }

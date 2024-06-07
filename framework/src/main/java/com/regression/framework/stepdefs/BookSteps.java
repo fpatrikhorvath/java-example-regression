@@ -1,21 +1,18 @@
 package com.regression.framework.stepdefs;
 
-
 import com.regression.framework.context.ScenarioContext;
 import com.regression.framework.rest.response.BookDTO;
-import com.regression.framework.rest.response.GenericErrorResponse;
 import com.regression.framework.rest.response.UserDTO;
 import com.regression.framework.stores.UserLayerContextStore;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.Objects;
 
-import static org.testng.AssertJUnit.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class BookSteps extends TestCore {
@@ -29,7 +26,18 @@ public class BookSteps extends TestCore {
         UserDTO user = (UserDTO) scenarioContext.getContextObject(userId);
         BookDTO book = getBookService().initContextBook(user.getId());
 
-        Response response = getBookService()
+        Response response = getBookService().registerBook(book);
+        assertThat(response.getStatusCode()).
+                withFailMessage(RESPONSE_CODE_CHECK_MESSAGE)
+                .isEqualTo(httpStatus.value());
+
+        if (httpStatus.value() == HttpStatus.CREATED.value()){
+            BookDTO responseBook = mutateObject(response, BookDTO.class);
+            book.setId(responseBook.getId());
+        } else {
+            scenarioContext.storeResponse(response);
+        }
+
         scenarioContext.storeContextObject(bookId, book);
     }
 
@@ -39,15 +47,16 @@ public class BookSteps extends TestCore {
         BookDTO book = (BookDTO) scenarioContext.getContextObject(bookId);
 
         Response response = getBookService().getBooks(book);
-        assertTrue(RESPONSE_CODE_CHECK_MESSAGE, response.getStatusCode().isSameCodeAs(HttpStatus.OK));
+        assertThat(response.getStatusCode()).withFailMessage(RESPONSE_CODE_CHECK_MESSAGE).isEqualTo(HttpStatus.OK);
 
-        BookDTO actBook = Objects.requireNonNull(response.getBody())
+        List<BookDTO> bookDTOList = mutateObjectList(response, BookDTO.class);
+        BookDTO actBook = bookDTOList
                 .stream()
                 .filter(b -> Objects.equals(b.getTitle(), book.getTitle()))
                 .findFirst()
                 .orElse(null);
 
-        assertNull(actBook);
+        assert actBook == null;
     }
 
     @Then("verify that book {word} exist")
@@ -55,16 +64,18 @@ public class BookSteps extends TestCore {
         BookDTO expBook = (BookDTO) scenarioContext.getContextObject(bookId);
 
         Response response = getBookService().getBooks(expBook);
-        assertTrue(RESPONSE_CODE_CHECK_MESSAGE, response.getStatusCode().isSameCodeAs(HttpStatus.OK));
+        assertThat(response.getStatusCode()).withFailMessage(RESPONSE_CODE_CHECK_MESSAGE)
+                .isEqualTo(HttpStatus.OK.value());
 
-        BookDTO actBook = Objects.requireNonNull(response.getBody())
+        List<BookDTO> bookDTOList = mutateObjectList(response, BookDTO.class);
+        BookDTO actBook = bookDTOList
                 .stream()
                 .filter(b -> Objects.equals(b.getTitle(), expBook.getTitle()))
                 .findFirst()
                 .orElse(null);
 
         assert actBook != null;
-        assertEquals(actBook, expBook);
+        assertThat(actBook).isEqualTo(expBook);
     }
 
     @When("delete book {word} for user {word} -> {}")
@@ -73,6 +84,7 @@ public class BookSteps extends TestCore {
         BookDTO book = (BookDTO) scenarioContext.getContextObject(bookId);
 
         Response response = getBookService().deleteBook(user, book);
-        assertTrue(RESPONSE_CODE_CHECK_MESSAGE, response.getStatusCode().isSameCodeAs(httpStatus));
+        assertThat(response.getStatusCode()).withFailMessage(RESPONSE_CODE_CHECK_MESSAGE)
+                .isEqualTo(httpStatus.value());
     }
 }

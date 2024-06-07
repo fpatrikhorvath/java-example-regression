@@ -7,49 +7,10 @@ import java.util.Objects;
 
 public class UserDTO {
 
-    private Long id = null;
-
-    private String name;
-
-    private String email;
-
-    /**
-     * Gets or Sets status
-     */
-    public enum StatusEnum {
-        A("A"),
-
-        B("B"),
-
-        C("C");
-
-        private String value;
-
-        StatusEnum(String value) {
-            this.value = value;
-        }
-
-        @JsonValue
-        public String getValue() {
-            return value;
-        }
-
-        @Override
-        public String toString() {
-            return String.valueOf(value);
-        }
-
-        public static StatusEnum fromValue(String value) {
-            for (StatusEnum b : StatusEnum.values()) {
-                if (b.value.equals(value)) {
-                    return b;
-                }
-            }
-            throw new IllegalArgumentException("Unexpected value '" + value + "'");
-        }
-    }
-
     protected StatusEnum status;
+    private Long id = null;
+    private String name;
+    private String email;
 
     /**
      * Constructor
@@ -65,6 +26,7 @@ public class UserDTO {
 
     /**
      * Get id
+     *
      * @return id
      */
     @JsonProperty("id")
@@ -83,6 +45,7 @@ public class UserDTO {
 
     /**
      * Get name
+     *
      * @return name
      */
     @JsonProperty("name")
@@ -115,6 +78,7 @@ public class UserDTO {
 
     /**
      * Get status
+     *
      * @return status
      */
     @JsonProperty("status")
@@ -163,5 +127,41 @@ public class UserDTO {
             return "null";
         }
         return o.toString().replace("\n", "\n    ");
+    }
+
+    /**
+     * Gets or Sets status
+     */
+    public enum StatusEnum {
+        A("A"),
+
+        B("B"),
+
+        C("C");
+
+        private String value;
+
+        StatusEnum(String value) {
+            this.value = value;
+        }
+
+        public static StatusEnum fromValue(String value) {
+            for (StatusEnum b : StatusEnum.values()) {
+                if (b.value.equals(value)) {
+                    return b;
+                }
+            }
+            throw new IllegalArgumentException("Unexpected value '" + value + "'");
+        }
+
+        @JsonValue
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return String.valueOf(value);
+        }
     }
 }

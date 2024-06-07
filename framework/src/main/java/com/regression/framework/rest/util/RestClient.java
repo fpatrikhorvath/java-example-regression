@@ -4,7 +4,6 @@ package com.regression.framework.rest.util;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.logging.log4j.LogManager;
@@ -36,6 +35,7 @@ public class RestClient {
                 .extract()
                 .response();
     }
+
     public Response POST(final String endpoint, final Object requestBody) {
         return request
                 .when()
@@ -45,6 +45,7 @@ public class RestClient {
                 .extract()
                 .response();
     }
+
     public Response DELETE(final String endpoint) {
         return request
                 .when()
@@ -53,7 +54,8 @@ public class RestClient {
                 .extract()
                 .response();
     }
-    private void logCurl(final String requestType, final String endpoint, final Object body){
+
+    private void logCurl(final String requestType, final String endpoint, final Object body) {
         StringBuilder curlCommand = new StringBuilder("curl -X ").append(requestType).append(" ");
 
         headers.forEach((key, value) ->

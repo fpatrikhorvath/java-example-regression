@@ -2,31 +2,25 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns="http://www.springframework.org/schema/beans"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-                 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
-    <context:component-scan base-package="magnum.opus"/>
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                 http://www.springframework.org/schema/context
+                 http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <context:component-scan base-package="com.regression.framework"/>
 
     <bean id="propertyConfigurer" class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
         <property name="locations">
             <list>
-                <value>classpath*:restapiexample.properties</value>
-                <value>classpath*:selenium.properties</value>
+                <value>classpath*:user-layer.properties</value>
             </list>
         </property>
     </bean>
 
-    <bean id="restapiexampleConfig" class="magnum.opus.config.rest.RestapiexampleConfig"
-          autowire-candidate="true">
-        <constructor-arg value="${restapiexample.employee.protocol}" type="java.lang.String"/>
-        <constructor-arg value="${restapiexample.employee.ip}" type="java.lang.String"/>
-        <constructor-arg value="${restapiexample.employee.port}" type="int"/>
-        <constructor-arg value="${restapiexample.employee.basePath}" type="java.lang.String"/>
-    </bean>
-
-    <bean id="seleniumConfig" class="magnum.opus.config.SeleniumConfig"
-          autowire-candidate="true">
-        <constructor-arg value="${selenium.driver.isHeadless}" type="boolean"/>
-        <constructor-arg value="${selenium.driver.timeout}" type="long"/>
-        <constructor-arg value="${selenium.driver.poll_rate}" type="long"/>
+    <bean id="userLayerConfig" class="com.regression.framework.config.UserLayerConfig" autowire-candidate="true">
+        <constructor-arg value="${layer.user.protocol}" type="java.lang.String"/>
+        <constructor-arg value="${layer.user.ip}" type="java.lang.String"/>
+        <constructor-arg value="${layer.user.port}" type="int"/>
     </bean>
 </beans>
