@@ -7,7 +7,7 @@ public enum ResponseErrorEnum {
 
     private final String message;
 
-    ResponseErrorEnum(String message) {
+    ResponseErrorEnum(final String message) {
         this.message = message;
     }
 
@@ -18,9 +18,5 @@ public enum ResponseErrorEnum {
             }
         }
         throw new IllegalArgumentException("No enum constant with value: " + message);
-    }
-
-    public String getMessage() {
-        return message;
     }
 }

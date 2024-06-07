@@ -3,6 +3,7 @@ package com.regression.framework.service;
 import com.regression.framework.rest.client.UserClient;
 import com.regression.framework.rest.request.CreateUserRequestDTO;
 import com.regression.framework.rest.response.UserDTO;
+import com.regression.framework.service.util.RandomService;
 import io.cucumber.spring.ScenarioScope;
 import io.restassured.response.Response;
 import org.apache.logging.log4j.LogManager;

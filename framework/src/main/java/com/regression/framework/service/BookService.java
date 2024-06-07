@@ -4,6 +4,7 @@ import com.regression.framework.rest.client.BookClient;
 import com.regression.framework.rest.request.CreateBookForUserRequestDTO;
 import com.regression.framework.rest.response.BookDTO;
 import com.regression.framework.rest.response.UserDTO;
+import com.regression.framework.service.util.RandomService;
 import io.cucumber.spring.ScenarioScope;
 import io.restassured.response.Response;
 import org.apache.logging.log4j.LogManager;
