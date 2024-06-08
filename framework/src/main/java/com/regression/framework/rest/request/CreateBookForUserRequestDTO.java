@@ -11,7 +11,6 @@ public class CreateBookForUserRequestDTO {
     private String author;
 
     public CreateBookForUserRequestDTO() {
-
     }
 
     public CreateBookForUserRequestDTO title(final String title) {

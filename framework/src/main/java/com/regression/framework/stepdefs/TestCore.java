@@ -19,7 +19,8 @@ public class TestCore {
     protected final ScenarioContext scenarioContext;
     private final UserLayerContextStore userLayerContextStore;
 
-    public TestCore(final UserLayerContextStore userLayerContextStore, final ScenarioContext scenarioContext) {
+    public TestCore(final UserLayerContextStore userLayerContextStore,
+                    final ScenarioContext scenarioContext) {
         this.userLayerContextStore = userLayerContextStore;
         this.scenarioContext = scenarioContext;
     }

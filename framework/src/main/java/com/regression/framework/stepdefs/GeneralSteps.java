@@ -12,7 +12,8 @@ import static org.testng.AssertJUnit.assertEquals;
 public class GeneralSteps extends TestCore {
     private static final Logger LOG = LogManager.getLogger(GeneralSteps.class);
 
-    public GeneralSteps(final UserLayerContextStore userLayerContextStore, final ScenarioContext scenarioContext) {
+    public GeneralSteps(final UserLayerContextStore userLayerContextStore,
+                        final ScenarioContext scenarioContext) {
         super(userLayerContextStore, scenarioContext);
     }
 

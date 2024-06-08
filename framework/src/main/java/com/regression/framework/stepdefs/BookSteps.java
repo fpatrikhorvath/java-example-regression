@@ -21,7 +21,6 @@ public class BookSteps extends TestCore {
     public BookSteps(final UserLayerContextStore userLayerContextStore,
                      final ScenarioContext scenarioContext,
                      final MapperService mapperService) {
-
         super(userLayerContextStore, scenarioContext);
         this.mapperService = mapperService;
     }

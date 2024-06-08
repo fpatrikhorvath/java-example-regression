@@ -23,7 +23,6 @@ public class UserSteps extends TestCore {
     public UserSteps(final UserLayerContextStore userLayerContextStore,
                      final ScenarioContext scenarioContext,
                      final MapperService mapperService) {
-
         super(userLayerContextStore, scenarioContext);
         this.mapperService = mapperService;
     }
