@@ -14,6 +14,7 @@
         <property name="locations">
             <list>
                 <value>classpath*:user-layer.properties</value>
+                <value>classpath*:parabank.properties</value>
             </list>
         </property>
     </bean>
@@ -22,5 +23,11 @@
         <constructor-arg value="${layer.user.protocol}" type="java.lang.String"/>
         <constructor-arg value="${layer.user.ip}" type="java.lang.String"/>
         <constructor-arg value="${layer.user.port}" type="int"/>
+    </bean>
+
+    <bean id="parabankConfig" class="com.regression.framework.config.ParabankConfig" autowire-candidate="true">
+        <constructor-arg value="${parasoft.user.protocol}" type="java.lang.String"/>
+        <constructor-arg value="${parasoft.user.ip}" type="java.lang.String"/>
+        <constructor-arg value="${parasoft.user.path}" type="java.lang.String"/>
     </bean>
 </beans>

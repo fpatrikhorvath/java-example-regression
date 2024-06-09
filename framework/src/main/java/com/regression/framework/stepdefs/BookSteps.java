@@ -28,6 +28,7 @@ public class BookSteps extends TestCore {
     @When("(create )a new book for user {word} and store it as {word} -> {int}")
     public void createANewBookForUserAndStoreItAs
             (final String userId, final String bookId, final int responseCode) {
+
         UserDTO user = (UserDTO) scenarioContext.getContextObject(userId);
         BookDTO book = getBookService().initContextBook(user.getId());
 

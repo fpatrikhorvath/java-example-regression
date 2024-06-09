@@ -22,7 +22,8 @@ public class MapperService {
         }
     }
 
-    public <T> List<T> mutateObjectList(final Response response, final Class<T> clazz) {
+    public <T> List<T> mutateObjectList(final Response response,
+                                        final Class<T> clazz) {
         try {
             String responseBody = response.getBody().asString();
             return mapper.readValue(responseBody, mapper.getTypeFactory().constructCollectionType(List.class, clazz));
