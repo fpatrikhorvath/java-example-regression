@@ -14,6 +14,8 @@
         <property name="locations">
             <list>
                 <value>classpath*:user-layer.properties</value>
+                <value>classpath*:parabank.properties</value>
+                <value>classpath*:selenium.properties</value>
             </list>
         </property>
     </bean>
@@ -23,4 +25,17 @@
         <constructor-arg value="${layer.user.ip}" type="java.lang.String"/>
         <constructor-arg value="${layer.user.port}" type="int"/>
     </bean>
+
+    <bean id="parabankConfig" class="com.regression.framework.config.ParabankConfig" autowire-candidate="true">
+        <constructor-arg value="${parasoft.user.protocol}" type="java.lang.String"/>
+        <constructor-arg value="${parasoft.user.ip}" type="java.lang.String"/>
+        <constructor-arg value="${parasoft.user.path}" type="java.lang.String"/>
+    </bean>
+
+    <bean id="seleniumConfig" class="com.regression.framework.config.SeleniumConfig" autowire-candidate="true">
+        <constructor-arg value="${selenium.driver.browserType}" type="java.lang.String"/>
+        <constructor-arg value="${selenium.driver.isHeadless}" type="boolean"/>
+        <constructor-arg value="${selenium.driver.timeout}" type="long"/>
+    </bean>
+
 </beans>

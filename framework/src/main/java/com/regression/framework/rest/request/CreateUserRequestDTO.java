@@ -17,7 +17,7 @@ public class CreateUserRequestDTO {
 
     }
 
-    public CreateUserRequestDTO name(String name) {
+    public CreateUserRequestDTO name(final String name) {
         this.name = name;
         return this;
     }
@@ -31,7 +31,7 @@ public class CreateUserRequestDTO {
         this.name = name;
     }
 
-    public CreateUserRequestDTO email(String email) {
+    public CreateUserRequestDTO email(final String email) {
         this.email = email;
         return this;
     }
@@ -41,11 +41,11 @@ public class CreateUserRequestDTO {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = email;
     }
 
-    public CreateUserRequestDTO status(StatusEnum status) {
+    public CreateUserRequestDTO status(final StatusEnum status) {
         this.status = status;
         return this;
     }
@@ -60,7 +60,7 @@ public class CreateUserRequestDTO {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) {
             return true;
         }
@@ -89,7 +89,7 @@ public class CreateUserRequestDTO {
         return sb.toString();
     }
 
-    private String toIndentedString(Object o) {
+    private String toIndentedString(final Object o) {
         if (o == null) {
             return "null";
         }

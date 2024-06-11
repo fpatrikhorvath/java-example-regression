@@ -1,6 +1,6 @@
 package com.regression.framework.service.util;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import io.cucumber.core.internal.com.fasterxml.jackson.databind.ObjectMapper;
 import io.cucumber.spring.ScenarioScope;
 import io.restassured.response.Response;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,8 @@ public class MapperService {
         }
     }
 
-    public <T> List<T> mutateObjectList(final Response response, final Class<T> clazz) {
+    public <T> List<T> mutateObjectList(final Response response,
+                                        final Class<T> clazz) {
         try {
             String responseBody = response.getBody().asString();
             return mapper.readValue(responseBody, mapper.getTypeFactory().constructCollectionType(List.class, clazz));

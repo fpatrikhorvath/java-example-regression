@@ -3,6 +3,7 @@ package com.regression.framework.stepdefs;
 import com.regression.framework.context.ScenarioContext;
 import com.regression.framework.rest.response.UserDTO;
 import com.regression.framework.service.util.MapperService;
+import com.regression.framework.stores.ParabankPageStore;
 import com.regression.framework.stores.UserLayerContextStore;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -22,9 +23,9 @@ public class UserSteps extends TestCore {
 
     public UserSteps(final UserLayerContextStore userLayerContextStore,
                      final ScenarioContext scenarioContext,
+                     final ParabankPageStore parabankPageStore,
                      final MapperService mapperService) {
-
-        super(userLayerContextStore, scenarioContext);
+        super(userLayerContextStore, scenarioContext, parabankPageStore);
         this.mapperService = mapperService;
     }
 

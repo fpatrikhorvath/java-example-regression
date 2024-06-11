@@ -18,7 +18,8 @@ public class UserService {
     private final UserClient userClient;
     private final RandomService randomService;
 
-    public UserService(final UserClient userClient, final RandomService randomService) {
+    public UserService(final UserClient userClient,
+                       final RandomService randomService) {
         this.userClient = userClient;
         this.randomService = randomService;
     }

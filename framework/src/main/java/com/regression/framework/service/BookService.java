@@ -21,7 +21,6 @@ public class BookService {
 
     public BookService(final BookClient bookClient,
                        final RandomService randomService) {
-
         this.bookClient = bookClient;
         this.randomService = randomService;
     }
