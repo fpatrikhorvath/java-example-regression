@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Scope;
 import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
 
 @Scope(SCOPE_CUCUMBER_GLUE)
-public class ParabankConfig extends RestConfig{
+public class ParabankConfig extends RestConfig {
 
     private final String path;
 
@@ -17,6 +17,6 @@ public class ParabankConfig extends RestConfig{
     }
 
     public String getUrl() {
-        return protocol + "://" + ip + ":" + path;
+        return protocol + "://" + ip + "/" + path;
     }
 }

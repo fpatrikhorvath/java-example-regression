@@ -1,6 +1,6 @@
 package com.regression.framework.service.util;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import io.cucumber.core.internal.com.fasterxml.jackson.databind.ObjectMapper;
 import io.cucumber.spring.ScenarioScope;
 import io.restassured.response.Response;
 import org.springframework.stereotype.Service;

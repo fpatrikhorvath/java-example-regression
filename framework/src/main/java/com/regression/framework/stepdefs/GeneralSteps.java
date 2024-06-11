@@ -2,6 +2,7 @@ package com.regression.framework.stepdefs;
 
 import com.regression.framework.context.ScenarioContext;
 import com.regression.framework.rest.response.ResponseErrorEnum;
+import com.regression.framework.stores.ParabankPageStore;
 import com.regression.framework.stores.UserLayerContextStore;
 import io.cucumber.java.en.Then;
 import org.apache.logging.log4j.LogManager;
@@ -13,8 +14,9 @@ public class GeneralSteps extends TestCore {
     private static final Logger LOG = LogManager.getLogger(GeneralSteps.class);
 
     public GeneralSteps(final UserLayerContextStore userLayerContextStore,
-                        final ScenarioContext scenarioContext) {
-        super(userLayerContextStore, scenarioContext);
+                        final ScenarioContext scenarioContext,
+                        final ParabankPageStore parabankPageStore) {
+        super(userLayerContextStore, scenarioContext, parabankPageStore);
     }
 
     @Then("the response has {} error")

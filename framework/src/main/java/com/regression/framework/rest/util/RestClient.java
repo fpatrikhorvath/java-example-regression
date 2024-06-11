@@ -29,6 +29,9 @@ public class RestClient {
     }
 
     public Response GET(final String endpoint) {
+
+        logCurl("GET", endpoint, null);
+
         return request.when()
                 .get(endpoint)
                 .then()
@@ -37,6 +40,9 @@ public class RestClient {
     }
 
     public Response POST(final String endpoint, final Object requestBody) {
+
+        logCurl("POST", endpoint, requestBody);
+
         return request
                 .when()
                 .body(requestBody)
@@ -47,6 +53,9 @@ public class RestClient {
     }
 
     public Response DELETE(final String endpoint) {
+
+        logCurl("DELETE", endpoint, null);
+
         return request
                 .when()
                 .delete(endpoint)

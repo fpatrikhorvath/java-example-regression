@@ -4,6 +4,7 @@ import com.regression.framework.context.ScenarioContext;
 import com.regression.framework.rest.response.BookDTO;
 import com.regression.framework.rest.response.UserDTO;
 import com.regression.framework.service.util.MapperService;
+import com.regression.framework.stores.ParabankPageStore;
 import com.regression.framework.stores.UserLayerContextStore;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -18,10 +19,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class BookSteps extends TestCore {
     private final MapperService mapperService;
 
+
     public BookSteps(final UserLayerContextStore userLayerContextStore,
                      final ScenarioContext scenarioContext,
+                     final ParabankPageStore parabankPageStore,
                      final MapperService mapperService) {
-        super(userLayerContextStore, scenarioContext);
+        super(userLayerContextStore, scenarioContext, parabankPageStore);
         this.mapperService = mapperService;
     }
 
