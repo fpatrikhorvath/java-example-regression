@@ -1,19 +1,28 @@
 package com.regression.framework.stores;
 
-import com.regression.framework.selenium.handler.LoginPageHandler;
+import com.regression.framework.selenium.handler.IndexPageHandler;
+import com.regression.framework.selenium.handler.RegisterPageHandler;
 import io.cucumber.spring.ScenarioScope;
 import org.springframework.stereotype.Service;
 
 @ScenarioScope
 @Service
 public class ParabankPageStore {
-    private final LoginPageHandler loginPageHandler;
+    private final IndexPageHandler indexPageHandler;
+    private final RegisterPageHandler registerPageHandler;
 
-    public ParabankPageStore(final LoginPageHandler loginPageHandler) {
-        this.loginPageHandler = loginPageHandler;
+    public ParabankPageStore(final IndexPageHandler loginPageHandler,
+                             final RegisterPageHandler registerPageHandler) {
+        this.indexPageHandler = loginPageHandler;
+        this.registerPageHandler = registerPageHandler;
     }
 
-    public LoginPageHandler getLoginPageHandler() {
-        return loginPageHandler;
+    public IndexPageHandler getIndexPageHandler() {
+        return indexPageHandler;
+    }
+
+
+    public RegisterPageHandler getRegisterPageHandler() {
+        return registerPageHandler;
     }
 }

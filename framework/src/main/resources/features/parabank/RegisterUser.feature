@@ -1,5 +1,5 @@
 Feature: Register user
 
   Scenario: Register a new user
-    Given the opened login page
-
+    Given I am on the register page
+    When I sign up with correct credentials and store it as user_A
