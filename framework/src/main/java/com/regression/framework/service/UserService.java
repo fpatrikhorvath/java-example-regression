@@ -3,7 +3,7 @@ package com.regression.framework.service;
 import com.regression.framework.rest.client.UserClient;
 import com.regression.framework.rest.request.CreateUserRequestDTO;
 import com.regression.framework.rest.response.UserDTO;
-import com.regression.framework.service.util.RandomService;
+import com.regression.framework.service.util.FakerService;
 import io.cucumber.spring.ScenarioScope;
 import io.restassured.response.Response;
 import org.apache.logging.log4j.LogManager;
@@ -16,12 +16,12 @@ public class UserService {
     private static final Logger LOG = LogManager.getLogger(UserService.class);
 
     private final UserClient userClient;
-    private final RandomService randomService;
+    private final FakerService fakerService;
 
     public UserService(final UserClient userClient,
-                       final RandomService randomService) {
+                       final FakerService fakerService) {
         this.userClient = userClient;
-        this.randomService = randomService;
+        this.fakerService = fakerService;
     }
 
     public UserDTO initContextUser(final String statusString) {
@@ -29,8 +29,8 @@ public class UserService {
 
         UserDTO.StatusEnum status = UserDTO.StatusEnum.valueOf(statusString);
 
-        user.setName(randomService.getRandomString(10));
-        user.setEmail(randomService.getRandomString(7) + "@gmail.com");
+        user.setName(fakerService.name().fullName());
+        user.setEmail(fakerService.name().username() + "@gmail.com");
         user.setStatus(status);
 
         LOG.debug("User: {}", user);

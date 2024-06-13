@@ -2,20 +2,23 @@ package com.regression.framework.selenium.handler;
 
 import com.regression.framework.selenium.model.ContextUser;
 import com.regression.framework.selenium.pom.RegisterPage;
-import com.regression.framework.service.util.RandomService;
+import com.regression.framework.service.util.FakerService;
 import io.cucumber.spring.ScenarioScope;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 @ScenarioScope
 @Service
 public class RegisterPageHandler {
+    private static final Logger LOG = LogManager.getLogger(RegisterPageHandler.class);
     private final RegisterPage registerPage;
-    private final RandomService randomService;
+    private final FakerService fakerService;
 
     public RegisterPageHandler(final RegisterPage registerPage,
-                               final RandomService randomService) {
+                               final FakerService fakerService) {
         this.registerPage = registerPage;
-        this.randomService = randomService;
+        this.fakerService = fakerService;
     }
 
     public void open() {
@@ -23,21 +26,22 @@ public class RegisterPageHandler {
         registerPage.isAt();
     }
 
-    //TODO: writing proper generators
     public ContextUser initContextUser() {
         ContextUser user = new ContextUser();
 
-        user.setFirstName(randomService.getRandomString(5));
-        user.setLastName(randomService.getRandomString(5));
-        user.setStreet(randomService.getRandomString(6));
-        user.setCity(randomService.getRandomString(7));
-        user.setState(randomService.getRandomString(6));
-        user.setZipCode(randomService.getRandomNumber(1000, 9999));
-        user.setPhone(randomService.getRandomNumber(1000, 9999));
-        user.setSsn(randomService.getRandomString(6));
+        user.setFirstName(fakerService.name().firstName());
+        user.setLastName(fakerService.name().lastName());
+        user.setStreet(fakerService.address().streetAddress());
+        user.setCity(fakerService.address().city());
+        user.setState(fakerService.address().state());
+        user.setZipCode(fakerService.address().zipCode());
+        user.setPhone(fakerService.phoneNumber().phoneNumber());
+        user.setSsn(fakerService.generateSsn());
 
-        user.setUsername(randomService.getRandomString(11));
-        user.setPassword(randomService.getRandomString(11));
+        user.setUsername(fakerService.name().username());
+        user.setPassword(fakerService.generatePassword());
+
+        LOG.debug("User: {}", user);
 
         return user;
     }

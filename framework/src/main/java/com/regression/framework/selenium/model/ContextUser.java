@@ -6,8 +6,8 @@ public class ContextUser {
     private String street;
     private String city;
     private String State;
-    private int zipCode;
-    private int phone;
+    private String zipCode;
+    private String phone;
     private String ssn;
     private String username;
     private String password;
@@ -55,19 +55,19 @@ public class ContextUser {
         State = state;
     }
 
-    public int getZipCode() {
+    public String getZipCode() {
         return zipCode;
     }
 
-    public void setZipCode(final int zipCode) {
+    public void setZipCode(final String zipCode) {
         this.zipCode = zipCode;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(final int phone) {
+    public void setPhone(final String phone) {
         this.phone = phone;
     }
 

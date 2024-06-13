@@ -38,7 +38,7 @@ public class RegisterPage extends BasePage {
     @FindBy(how = How.ID, using = "repeatedPassword")
     private WebElement passwordAgainInputField;
 
-    @FindBy(how = How.XPATH, using = "//input[@type='submit']")
+    @FindBy(how = How.XPATH, using = "//input[@value='Register']")
     private WebElement registerButton;
 
     protected RegisterPage(final WebDriverFactory driverFactory,

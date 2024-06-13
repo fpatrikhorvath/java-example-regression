@@ -4,7 +4,7 @@ import com.regression.framework.rest.client.BookClient;
 import com.regression.framework.rest.request.CreateBookForUserRequestDTO;
 import com.regression.framework.rest.response.BookDTO;
 import com.regression.framework.rest.response.UserDTO;
-import com.regression.framework.service.util.RandomService;
+import com.regression.framework.service.util.FakerService;
 import io.cucumber.spring.ScenarioScope;
 import io.restassured.response.Response;
 import org.apache.logging.log4j.LogManager;
@@ -17,12 +17,12 @@ public class BookService {
     private static final Logger LOG = LogManager.getLogger(BookService.class);
 
     private final BookClient bookClient;
-    private final RandomService randomService;
+    private final FakerService fakerService;
 
     public BookService(final BookClient bookClient,
-                       final RandomService randomService) {
+                       final FakerService fakerService) {
         this.bookClient = bookClient;
-        this.randomService = randomService;
+        this.fakerService = fakerService;
     }
 
 
@@ -30,8 +30,8 @@ public class BookService {
         BookDTO book = new BookDTO();
 
         book.setUserId(userId);
-        book.setAuthor(randomService.getRandomString(10));
-        book.setTitle(randomService.getRandomString(10));
+        book.setAuthor(fakerService.book().author());
+        book.setTitle(fakerService.book().title());
 
         LOG.debug("Book: {}", book);
         return book;
