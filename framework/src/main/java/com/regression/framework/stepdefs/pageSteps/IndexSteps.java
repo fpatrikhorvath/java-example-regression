@@ -7,13 +7,10 @@ import com.regression.framework.stores.ParabankPageStore;
 import com.regression.framework.stores.UserLayerContextStore;
 
 public class IndexSteps extends TestCore {
-    private final MapperService mapperService;
 
     public IndexSteps(final UserLayerContextStore userLayerContextStore,
                       final ScenarioContext scenarioContext,
-                      final ParabankPageStore parabankPageStore,
-                      final MapperService mapperService) {
+                      final ParabankPageStore parabankPageStore) {
         super(userLayerContextStore, scenarioContext, parabankPageStore);
-        this.mapperService = mapperService;
     }
 }

@@ -10,14 +10,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
 public class RegisterSteps extends TestCore {
-    private final MapperService mapperService;
 
     public RegisterSteps(final UserLayerContextStore userLayerContextStore,
                          final ScenarioContext scenarioContext,
-                         final ParabankPageStore parabankPageStore,
-                         final MapperService mapperService) {
+                         final ParabankPageStore parabankPageStore) {
         super(userLayerContextStore, scenarioContext, parabankPageStore);
-        this.mapperService = mapperService;
     }
 
     @Given("I am on the register page")
