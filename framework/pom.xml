@@ -23,6 +23,7 @@
         <rest-assured.version>5.4.0</rest-assured.version>
         <selenium.version>4.17.0</selenium.version>
         <jackson.version>2.17.1</jackson.version>
+        <faker.version>0.12</faker.version>
     </properties>
 
 
@@ -96,5 +97,10 @@
             <version>${jackson.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>${faker.version}</version>
+        </dependency>
     </dependencies>
 </project>

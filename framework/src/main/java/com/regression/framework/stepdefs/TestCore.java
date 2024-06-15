@@ -1,7 +1,8 @@
 package com.regression.framework.stepdefs;
 
 import com.regression.framework.context.ScenarioContext;
-import com.regression.framework.selenium.handler.LoginPageHandler;
+import com.regression.framework.selenium.handler.IndexPageHandler;
+import com.regression.framework.selenium.handler.RegisterPageHandler;
 import com.regression.framework.service.BookService;
 import com.regression.framework.service.UserService;
 import com.regression.framework.stores.ParabankPageStore;
@@ -38,7 +39,11 @@ public class TestCore {
         return userLayerContextStore.getBookService();
     }
 
-    protected LoginPageHandler getLoginPageHandler() {
-        return parabankPageStore.getLoginPageHandler();
+    protected IndexPageHandler getIndexPageHandler() {
+        return parabankPageStore.getIndexPageHandler();
+    }
+
+    protected RegisterPageHandler getRegisterPageHandler() {
+        return parabankPageStore.getRegisterPageHandler();
     }
 }
