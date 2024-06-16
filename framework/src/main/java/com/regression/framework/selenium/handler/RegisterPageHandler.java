@@ -41,13 +41,12 @@ public class RegisterPageHandler {
         user.setUsername(fakerService.name().username());
         user.setPassword(fakerService.generatePassword());
 
-        LOG.debug("User: {}", user);
+        LOG.info("User: {}", user);
 
         return user;
     }
 
     public void register(final ContextUser user) {
-
         registerPage.getFirstNameInputField().sendKeys(user.getFirstName());
         registerPage.getLastNameInputField().sendKeys(user.getLastName());
         registerPage.getStreetInputField().sendKeys(user.getStreet());
@@ -62,5 +61,10 @@ public class RegisterPageHandler {
         registerPage.getPasswordAgainInputField().sendKeys(user.getPassword());
 
         registerPage.getRegisterButton().click();
+    }
+
+
+    public boolean isLoggedIn() {
+        return registerPage.isLoggedIn();
     }
 }

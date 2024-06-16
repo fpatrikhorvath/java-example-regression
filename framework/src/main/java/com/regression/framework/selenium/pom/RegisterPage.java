@@ -41,6 +41,9 @@ public class RegisterPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//input[@value='Register']")
     private WebElement registerButton;
 
+    @FindBy(how = How.XPATH, using = "//a[@href='logout.htm']")
+    private WebElement logoutButton;
+
     protected RegisterPage(final WebDriverFactory driverFactory,
                            final WebDriverWaitFactory driverWaitFactory,
                            final ParabankConfig parabankConfig) {
@@ -57,6 +60,10 @@ public class RegisterPage extends BasePage {
     public void goTo() {
         String url = StringUtils.replace(parabankConfig.getUrl(), "{pageName}", PAGE_NAME);
         getDriver().get(url);
+    }
+
+    public boolean isLoggedIn(){
+        return this.defaultWaitFor().until((driver -> logoutButton.isDisplayed()));
     }
 
     public WebElement getFirstNameInputField() {
