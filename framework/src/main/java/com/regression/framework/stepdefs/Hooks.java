@@ -10,8 +10,6 @@ import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
-import java.io.File;
-
 public class Hooks extends TestCore {
     private final WebDriverFactory webDriverFactory;
 
