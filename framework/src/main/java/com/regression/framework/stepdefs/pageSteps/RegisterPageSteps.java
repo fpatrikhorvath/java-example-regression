@@ -10,11 +10,11 @@ import io.cucumber.java.en.Then;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class RegisterSteps extends TestCore {
+public class RegisterPageSteps extends TestCore {
 
-    public RegisterSteps(final UserLayerContextStore userLayerContextStore,
-                         final ScenarioContext scenarioContext,
-                         final ParabankPageStore parabankPageStore) {
+    public RegisterPageSteps(final UserLayerContextStore userLayerContextStore,
+                             final ScenarioContext scenarioContext,
+                             final ParabankPageStore parabankPageStore) {
         super(userLayerContextStore, scenarioContext, parabankPageStore);
     }
 
@@ -45,13 +45,18 @@ public class RegisterSteps extends TestCore {
         scenarioContext.storeContextObject(identifier, user);
     }
 
-    @Then("verify that the registration was successful")
-    public void verifyThatTheRegistrationWasSuccessful() {
+    @Then("verify that the user is logged in")
+    public void verifyThatTheUserIsLoggedIm() {
         assertThat(getRegisterPageHandler().isLoggedIn()).isTrue();
     }
 
-    @Then("verify that the registration was not successful")
-    public void verifyThatTheRegistrationWasNotSuccessful() {
-        assertThat(getRegisterPageHandler().isLoggedIn()).isFalse();
+    @Then("verify that the user is not logged in")
+    public void verifyThatTheUserIsNotLoggedIm() {
+        assertThat(getIndexPageHandler().isLoggedOut()).isTrue();
+    }
+
+    @Given("I log out")
+    public void iLogOut() {
+        getRegisterPageHandler().logOut();
     }
 }

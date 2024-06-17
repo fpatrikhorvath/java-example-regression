@@ -1,22 +1,25 @@
 package com.regression.framework.selenium.handler;
 
+import com.regression.framework.config.ParabankConfig;
+import com.regression.framework.selenium.WebDriverFactory;
+import com.regression.framework.selenium.WebDriverWaitFactory;
 import com.regression.framework.selenium.pom.IndexPage;
 import io.cucumber.spring.ScenarioScope;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 @ScenarioScope
 @Service
-public class IndexPageHandler {
-
+public class IndexPageHandler extends BasePageHandler {
+    private final String PAGE_NAME = "index";
     private final IndexPage indexPage;
 
-    public IndexPageHandler(final IndexPage loginPage) {
-        this.indexPage = loginPage;
-    }
-
-    public void open() {
-        indexPage.goTo();
-        indexPage.isAt();
+    protected IndexPageHandler(final WebDriverWaitFactory webDriverWaitFactory,
+                               final WebDriverFactory driverFactory,
+                               final IndexPage indexPage,
+                               final ParabankConfig parabankConfig) {
+        super(webDriverWaitFactory, driverFactory, parabankConfig);
+        this.indexPage = indexPage;
     }
 
     public void navigateTo(final String pageName) {
@@ -30,5 +33,21 @@ public class IndexPageHandler {
     public void login(final String username, final String password) {
         indexPage.getUsernameInputField().sendKeys(username);
         indexPage.getPasswordInputField().sendKeys(password);
+        indexPage.getLoginButton().click();
+    }
+
+    public boolean isLoggedOut() {
+        return isAt();
+    }
+
+    @Override
+    protected boolean isAt() {
+        return this.defaultWaitFor().until((driver -> indexPage.getUsernameInputField().isDisplayed()));
+    }
+
+    @Override
+    protected void goTo() {
+        String url = StringUtils.replace(parabankConfig.getUrl(), "{pageName}", PAGE_NAME);
+        driverFactory.getDriver().get(url);
     }
 }
