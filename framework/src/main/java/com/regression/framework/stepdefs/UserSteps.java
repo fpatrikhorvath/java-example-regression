@@ -30,9 +30,9 @@ public class UserSteps extends TestCore {
     }
 
     @Given("(create )a new user of status {word} and store it as {word} -> {int}")
-    public void createANewUserOfTypeAndStoreItAs
-            (final String statusString, final String contextId, final int responseCode) {
-
+    public void createANewUserOfTypeAndStoreItAs(final String statusString,
+                                                 final String contextId,
+                                                 final int responseCode) {
         UserDTO user = getUserService().initContextUser(statusString);
 
         Response response = getUserService().registerUser(user);
@@ -67,7 +67,8 @@ public class UserSteps extends TestCore {
     }
 
     @When("delete user {word} -> {int}")
-    public void deleteUser(final String contextId, final int responseCode) {
+    public void deleteUser(final String contextId,
+                           final int responseCode) {
         UserDTO user = (UserDTO) scenarioContext.getContextObject(contextId);
 
         Response response = getUserService().deleteUser(user.getId());

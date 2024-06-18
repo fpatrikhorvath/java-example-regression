@@ -20,43 +20,54 @@ public class RegisterPageSteps extends TestCore {
 
     @Given("I am on the register page")
     public void iAmOnTheRegisterPage() {
-        getRegisterPageHandler().open();
 
+        getRegisterPageHandler().goTo();
+
+        getRegisterPageHandler().isAt();
     }
 
     @Given("I sign up with correct credentials and store it as {word}")
     public void iSignUpWithCorrectCredentialsAndStoreItAs(final String identifier) {
+
         ContextUser user = getRegisterPageHandler().initContextUser();
+
         getRegisterPageHandler().register(user);
+
         scenarioContext.storeContextObject(identifier, user);
     }
 
     @Given("I sign up without {word} and store it as {word}")
-    public void iSignUpWithoutAndStoreItAs(final String without, final String identifier) {
+    public void iSignUpWithoutAndStoreItAs(final String without,
+                                           final String identifier) {
         ContextUser user = getRegisterPageHandler().initContextUser();
 
         switch (without) {
             case "username" -> user.setUsername("");
             case "password" -> user.setPassword("");
+            case "city" -> user.setCity("");
+            case "phone" -> user.setPhone("");
             default -> throw new RuntimeException("This option is not implemented for incorrect registration!");
         }
 
         getRegisterPageHandler().register(user);
+
         scenarioContext.storeContextObject(identifier, user);
-    }
-
-    @Then("verify that the user is logged in")
-    public void verifyThatTheUserIsLoggedIm() {
-        assertThat(getRegisterPageHandler().isLoggedIn()).isTrue();
-    }
-
-    @Then("verify that the user is not logged in")
-    public void verifyThatTheUserIsNotLoggedIm() {
-        assertThat(getIndexPageHandler().isLoggedOut()).isTrue();
     }
 
     @Given("I log out")
     public void iLogOut() {
         getRegisterPageHandler().logOut();
+    }
+
+    @Then("verify that the user is registered")
+    public void verifyThatTheUserIsRegistered() {
+
+        assertThat(getRegisterPageHandler().isLogoutButtonVisible()).isTrue();
+    }
+
+    @Then("verify that the user is not registered")
+    public void verifyThatTheUserIsNotRegistered() {
+
+        assertThat(getRegisterPageHandler().isLogoutButtonVisible()).isFalse();
     }
 }

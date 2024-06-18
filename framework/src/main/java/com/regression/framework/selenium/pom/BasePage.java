@@ -5,7 +5,6 @@ import io.cucumber.spring.ScenarioScope;
 import jakarta.annotation.PostConstruct;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 @ScenarioScope
@@ -21,9 +20,5 @@ public abstract class BasePage {
     @PostConstruct
     private void init() {
         PageFactory.initElements(driverFactory.getDriver(), this);
-    }
-
-    public WebDriver getDriver() {
-        return driverFactory.getDriver();
     }
 }
