@@ -59,10 +59,14 @@ public class RegisterPageSteps extends TestCore {
         getRegisterPageHandler().logOut();
     }
 
-    @Then("verify that the user is registered")
-    public void verifyThatTheUserIsRegistered() {
+    @Then("verify that the user {word} is registered")
+    public void verifyThatTheUserIsRegistered(final String identifier) {
 
-        assertThat(getRegisterPageHandler().isLogoutButtonVisible()).isTrue();
+        ContextUser user = (ContextUser) scenarioContext.getContextObject(identifier);
+
+        String expectedWelcomeMessage = "Welcome ".concat(user.getUsername());
+        assertThat(getRegisterPageHandler().getWelcomeMessage())
+                .isEqualTo(expectedWelcomeMessage);
     }
 
     @Then("verify that the user is not registered")

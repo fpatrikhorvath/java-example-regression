@@ -92,4 +92,8 @@ public class RegisterPageHandler extends BasePageHandler {
         String url = StringUtils.replace(parabankConfig.getUrl(), "{pageName}", PAGE_NAME);
         driverFactory.getDriver().get(url);
     }
+
+    public String getWelcomeMessage() {
+        return registerPage.getWelcomeTitle().getText();
+    }
 }
