@@ -6,3 +6,4 @@ Feature: Log in the user on the webpage
     Given I log out
     When I log in as user_A
     Then verify that the user is logged in
+

@@ -90,9 +90,7 @@ public class BookSteps extends TestCore {
     }
 
     @When("delete book {word} for user {word} -> {int}")
-    public void deleteBook(final String bookId,
-                           final String userId,
-                           final int responseCode) {
+    public void deleteBook(final String bookId, final String userId, final int responseCode) {
         UserDTO user = (UserDTO) scenarioContext.getContextObject(userId);
         BookDTO book = (BookDTO) scenarioContext.getContextObject(bookId);
 

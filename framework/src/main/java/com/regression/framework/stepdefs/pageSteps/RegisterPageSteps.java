@@ -31,14 +31,13 @@ public class RegisterPageSteps extends TestCore {
 
         ContextUser user = getRegisterPageHandler().initContextUser();
 
-        getRegisterPageHandler().register(user);
+        getRegisterPageHandler().fillRegisterForm(user);
 
         scenarioContext.storeContextObject(identifier, user);
     }
 
     @Given("I sign up without {word} and store it as {word}")
-    public void iSignUpWithoutAndStoreItAs(final String without,
-                                           final String identifier) {
+    public void iSignUpWithoutAndStoreItAs(final String without, final String identifier) {
         ContextUser user = getRegisterPageHandler().initContextUser();
 
         switch (without) {
@@ -49,7 +48,7 @@ public class RegisterPageSteps extends TestCore {
             default -> throw new RuntimeException("This option is not implemented for incorrect registration!");
         }
 
-        getRegisterPageHandler().register(user);
+        getRegisterPageHandler().fillRegisterForm(user);
 
         scenarioContext.storeContextObject(identifier, user);
     }

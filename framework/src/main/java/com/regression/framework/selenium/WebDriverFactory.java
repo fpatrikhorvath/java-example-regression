@@ -23,7 +23,7 @@ public class WebDriverFactory {
     public WebDriverFactory(final SeleniumConfig seleniumConfig) {
         this.seleniumConfig = seleniumConfig;
         if (driver == null) {
-            logger.info("Initializing the {}driver", seleniumConfig.getBrowserType());
+            logger.info("Initializing the {} driver", seleniumConfig.getBrowserType());
             switch (seleniumConfig.getBrowserType()) {
                 case "chrome" -> driver = initChromeDriver();
                 case "firefox" -> driver = initFirefoxDriver();

@@ -51,7 +51,8 @@ public class BookService {
         return bookClient.getBooksForUser(book.getUserId());
     }
 
-    public Response deleteBook(final UserDTO user, final BookDTO book) {
+    public Response deleteBook(final UserDTO user,
+                               final BookDTO book) {
         return bookClient.deleteBook(user.getId(), book.getUserId());
     }
 }

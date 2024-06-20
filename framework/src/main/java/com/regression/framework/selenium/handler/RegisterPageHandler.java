@@ -51,7 +51,7 @@ public class RegisterPageHandler extends BasePageHandler {
         return user;
     }
 
-    public void register(final ContextUser user) {
+    public void fillRegisterForm(final ContextUser user) {
 
         registerPage.getFirstNameInputField().sendKeys(user.getFirstName());
         registerPage.getLastNameInputField().sendKeys(user.getLastName());
