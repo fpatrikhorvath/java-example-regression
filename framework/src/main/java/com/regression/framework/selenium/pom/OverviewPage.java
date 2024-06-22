@@ -13,8 +13,11 @@ public class OverviewPage extends BasePage {
     @FindBy(how = How.ID, using = "accountTable")
     private WebElement accountTable;
 
-
     protected OverviewPage(final WebDriverFactory driverFactory) {
         super(driverFactory);
+    }
+
+    public WebElement getAccountTable() {
+        return accountTable;
     }
 }

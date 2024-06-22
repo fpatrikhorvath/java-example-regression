@@ -2,6 +2,7 @@ package com.regression.framework.stepdefs;
 
 import com.regression.framework.context.ScenarioContext;
 import com.regression.framework.selenium.handler.IndexPageHandler;
+import com.regression.framework.selenium.handler.OverviewPageHandler;
 import com.regression.framework.selenium.handler.RegisterPageHandler;
 import com.regression.framework.service.BookService;
 import com.regression.framework.service.UserService;
@@ -45,5 +46,9 @@ public class TestCore {
 
     protected RegisterPageHandler getRegisterPageHandler() {
         return parabankPageStore.getRegisterPageHandler();
+    }
+
+    protected OverviewPageHandler getOverviewPage() {
+        return parabankPageStore.getOverviewPageHandler();
     }
 }

@@ -30,23 +30,20 @@ public class IndexPageHandler extends BasePageHandler {
         }
     }
 
-    public void login(final String username, final String password) {
+    public void login(final String username,
+                      final String password) {
         indexPage.getUsernameInputField().sendKeys(username);
         indexPage.getPasswordInputField().sendKeys(password);
         indexPage.getLoginButton().click();
     }
 
-    public boolean isLoggedOut() {
-        return isAt();
-    }
-
     @Override
-    protected boolean isAt() {
+    public boolean isAt() {
         return this.defaultWaitFor().until((driver -> indexPage.getUsernameInputField().isDisplayed()));
     }
 
     @Override
-    protected void goTo() {
+    public void goTo() {
         String url = StringUtils.replace(parabankConfig.getUrl(), "{pageName}", PAGE_NAME);
         driverFactory.getDriver().get(url);
     }

@@ -39,6 +39,9 @@ public class RegisterPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//a[@href='logout.htm']")
     private WebElement logoutButton;
 
+    @FindBy(how = How.XPATH, using = "//div[@id='rightPanel']/h1")
+    private WebElement welcomeTitle;
+
     protected RegisterPage(final WebDriverFactory driverFactory) {
         super(driverFactory);
     }
@@ -93,5 +96,9 @@ public class RegisterPage extends BasePage {
 
     public WebElement getLogoutButton() {
         return logoutButton;
+    }
+
+    public WebElement getWelcomeTitle() {
+        return welcomeTitle;
     }
 }

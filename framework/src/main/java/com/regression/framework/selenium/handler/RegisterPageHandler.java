@@ -9,6 +9,7 @@ import com.regression.framework.service.util.FakerService;
 import io.cucumber.spring.ScenarioScope;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.NoSuchElementException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -20,16 +21,14 @@ public class RegisterPageHandler extends BasePageHandler {
     private final RegisterPage registerPage;
     private final FakerService fakerService;
 
-    protected RegisterPageHandler(final WebDriverWaitFactory webDriverWaitFactory, final WebDriverFactory driverFactory, final RegisterPage registerPage, final FakerService fakerService, final ParabankConfig parabankConfig) {
+    protected RegisterPageHandler(final WebDriverWaitFactory webDriverWaitFactory,
+                                  final WebDriverFactory driverFactory,
+                                  final RegisterPage registerPage,
+                                  final FakerService fakerService,
+                                  final ParabankConfig parabankConfig) {
         super(webDriverWaitFactory, driverFactory, parabankConfig);
         this.registerPage = registerPage;
         this.fakerService = fakerService;
-    }
-
-
-    public void open() {
-        goTo();
-        isAt();
     }
 
     public ContextUser initContextUser() {
@@ -52,7 +51,7 @@ public class RegisterPageHandler extends BasePageHandler {
         return user;
     }
 
-    public void register(final ContextUser user) {
+    public void fillRegisterForm(final ContextUser user) {
 
         registerPage.getFirstNameInputField().sendKeys(user.getFirstName());
         registerPage.getLastNameInputField().sendKeys(user.getLastName());
@@ -70,23 +69,31 @@ public class RegisterPageHandler extends BasePageHandler {
         registerPage.getRegisterButton().click();
     }
 
-
-    public boolean isLoggedIn() {
-        return this.defaultWaitFor().until((driver -> registerPage.getLogoutButton().isDisplayed()));
-    }
-
     public void logOut() {
         registerPage.getLogoutButton().click();
     }
 
     @Override
-    protected boolean isAt() {
+    public boolean isAt() {
+
         return this.defaultWaitFor().until((driver -> registerPage.getFirstNameInputField().isDisplayed()));
     }
 
+    public boolean isLogoutButtonVisible() {
+        try {
+            return registerPage.getLogoutButton().isDisplayed();
+        } catch (NoSuchElementException nsee) {
+            return false;
+        }
+    }
+
     @Override
-    protected void goTo() {
+    public void goTo() {
         String url = StringUtils.replace(parabankConfig.getUrl(), "{pageName}", PAGE_NAME);
         driverFactory.getDriver().get(url);
+    }
+
+    public String getWelcomeMessage() {
+        return registerPage.getWelcomeTitle().getText();
     }
 }

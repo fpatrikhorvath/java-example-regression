@@ -22,13 +22,16 @@ public class WebDriverFactory {
     @Autowired
     public WebDriverFactory(final SeleniumConfig seleniumConfig) {
         this.seleniumConfig = seleniumConfig;
+
         if (driver == null) {
-            logger.info("Initializing the {}driver", seleniumConfig.getBrowserType());
+            logger.info("Initializing the {} driver", seleniumConfig.getBrowserType());
+
             switch (seleniumConfig.getBrowserType()) {
                 case "chrome" -> driver = initChromeDriver();
                 case "firefox" -> driver = initFirefoxDriver();
                 default -> throw new RuntimeException("The given browser is not an option!");
             }
+
             WebDriverInitializationListener.setIsInitialized(true);
             logger.info("Chrome driver initialized: {}", WebDriverInitializationListener.isInitialized());
         }
@@ -36,17 +39,21 @@ public class WebDriverFactory {
 
     private ChromeDriver initChromeDriver() {
         ChromeOptions options = new ChromeOptions();
+
         if (seleniumConfig.isHeadless()) {
             options.addArguments("--headless");
         }
+
         return new ChromeDriver(options);
     }
 
     private FirefoxDriver initFirefoxDriver() {
         FirefoxOptions options = new FirefoxOptions();
+
         if (seleniumConfig.isHeadless()) {
             options.addArguments("--headless");
         }
+
         return new FirefoxDriver(options);
     }
 

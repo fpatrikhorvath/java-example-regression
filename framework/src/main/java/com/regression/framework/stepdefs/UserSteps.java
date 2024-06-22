@@ -32,7 +32,6 @@ public class UserSteps extends TestCore {
     @Given("(create )a new user of status {word} and store it as {word} -> {int}")
     public void createANewUserOfTypeAndStoreItAs
             (final String statusString, final String contextId, final int responseCode) {
-
         UserDTO user = getUserService().initContextUser(statusString);
 
         Response response = getUserService().registerUser(user);
@@ -69,20 +68,18 @@ public class UserSteps extends TestCore {
     @When("delete user {word} -> {int}")
     public void deleteUser(final String contextId, final int responseCode) {
         UserDTO user = (UserDTO) scenarioContext.getContextObject(contextId);
-
         Response response = getUserService().deleteUser(user.getId());
         assertThat(response.getStatusCode()).withFailMessage(RESPONSE_CODE_CHECK_MESSAGE)
                 .isEqualTo(responseCode);
 
         if (204 != response.getStatusCode()) {
-            scenarioContext.storeResponse(response);
+            scenarioContext.storeErrorResponse(response);
         }
     }
 
     @Then("verify that user {word} does not exist")
     public void verifyThatUserDoesNotExist(final String contextId) {
         UserDTO user = (UserDTO) scenarioContext.getContextObject(contextId);
-
         Response response = getUserService().getUsers();
         assertThat(response.getStatusCode()).withFailMessage(RESPONSE_CODE_CHECK_MESSAGE)
                 .isEqualTo(HttpStatus.OK.value());

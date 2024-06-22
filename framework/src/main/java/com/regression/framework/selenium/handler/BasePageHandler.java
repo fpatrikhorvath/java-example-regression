@@ -27,7 +27,7 @@ public abstract class BasePageHandler {
         return driverWaitFactory.defaultWait(driverFactory.getDriver());
     }
 
-    protected abstract boolean isAt();
+    public abstract boolean isAt();
 
-    protected abstract void goTo();
+    public abstract void goTo();
 }
