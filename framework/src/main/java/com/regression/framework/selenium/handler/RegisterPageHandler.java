@@ -82,7 +82,7 @@ public class RegisterPageHandler extends BasePageHandler {
     public boolean isLogoutButtonVisible() {
         try {
             return registerPage.getLogoutButton().isDisplayed();
-        } catch (NoSuchElementException nsee){
+        } catch (NoSuchElementException nsee) {
             return false;
         }
     }

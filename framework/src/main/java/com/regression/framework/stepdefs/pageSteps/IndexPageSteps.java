@@ -20,20 +20,12 @@ public class IndexPageSteps extends TestCore {
 
     @When("I log in as {word}")
     public void iLogInAs(final String identifier) {
-
         ContextUser user = (ContextUser) scenarioContext.getContextObject(identifier);
-
         getIndexPageHandler().login(user.getUsername(), user.getPassword());
-    }
-    @Then("verify that the user is logged in")
-    public void verifyThatTheUserIsLoggedIm() {
-
-        assertThat(getRegisterPageHandler().isAt()).isFalse();
     }
 
     @Then("verify that the user is not logged in")
     public void verifyThatTheUserIsNotLoggedIm() {
-
         assertThat(getIndexPageHandler().isAt()).isTrue();
     }
 }

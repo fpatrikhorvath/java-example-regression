@@ -32,7 +32,7 @@ public class ScenarioContext {
         return response;
     }
 
-    public void storeResponse(final Response response) {
+    public void storeErrorResponse(final Response response) {
         GenericErrorResponse genericErrorResponse = mapperService.mutateObject(response, GenericErrorResponse.class);
         this.response = ResponseErrorEnum.getByMessage(genericErrorResponse.getError());
     }

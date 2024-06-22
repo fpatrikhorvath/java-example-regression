@@ -45,7 +45,7 @@ public class BookSteps extends TestCore {
             book.setId(responseBook.getId());
 
         } else {
-            scenarioContext.storeResponse(response);
+            scenarioContext.storeErrorResponse(response);
 
         }
         scenarioContext.storeContextObject(bookId, book);

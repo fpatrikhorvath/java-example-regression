@@ -16,4 +16,8 @@ public class OverviewPage extends BasePage {
     protected OverviewPage(final WebDriverFactory driverFactory) {
         super(driverFactory);
     }
+
+    public WebElement getAccountTable() {
+        return accountTable;
+    }
 }

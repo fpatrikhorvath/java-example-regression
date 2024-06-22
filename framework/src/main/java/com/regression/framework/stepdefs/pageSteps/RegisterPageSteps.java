@@ -20,19 +20,14 @@ public class RegisterPageSteps extends TestCore {
 
     @Given("I am on the register page")
     public void iAmOnTheRegisterPage() {
-
         getRegisterPageHandler().goTo();
-
         getRegisterPageHandler().isAt();
     }
 
     @Given("I sign up with correct credentials and store it as {word}")
     public void iSignUpWithCorrectCredentialsAndStoreItAs(final String identifier) {
-
         ContextUser user = getRegisterPageHandler().initContextUser();
-
         getRegisterPageHandler().fillRegisterForm(user);
-
         scenarioContext.storeContextObject(identifier, user);
     }
 
@@ -49,7 +44,6 @@ public class RegisterPageSteps extends TestCore {
         }
 
         getRegisterPageHandler().fillRegisterForm(user);
-
         scenarioContext.storeContextObject(identifier, user);
     }
 
@@ -60,17 +54,13 @@ public class RegisterPageSteps extends TestCore {
 
     @Then("verify that the user {word} is registered")
     public void verifyThatTheUserIsRegistered(final String identifier) {
-
         ContextUser user = (ContextUser) scenarioContext.getContextObject(identifier);
-
         String expectedWelcomeMessage = "Welcome ".concat(user.getUsername());
-        assertThat(getRegisterPageHandler().getWelcomeMessage())
-                .isEqualTo(expectedWelcomeMessage);
+        assertThat(getRegisterPageHandler().getWelcomeMessage()).isEqualTo(expectedWelcomeMessage);
     }
 
     @Then("verify that the user is not registered")
     public void verifyThatTheUserIsNotRegistered() {
-
         assertThat(getRegisterPageHandler().isLogoutButtonVisible()).isFalse();
     }
 }
