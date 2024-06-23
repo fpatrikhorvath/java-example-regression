@@ -1,6 +1,6 @@
 Feature: Log in the user on the webpage
 
-  Scenario: Log in after the registration
+  Scenario: Log in after the user is signed up
     Given I am on the register page
     Given I sign up with correct credentials and store it as user_A
     Given I log out
