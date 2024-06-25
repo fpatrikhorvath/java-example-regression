@@ -30,8 +30,7 @@ public class IndexPageHandler extends BasePageHandler {
         }
     }
 
-    public void login(final String username,
-                      final String password) {
+    public void login(final String username, final String password) {
         indexPage.getUsernameInputField().sendKeys(username);
         indexPage.getPasswordInputField().sendKeys(password);
         indexPage.getLoginButton().click();
