@@ -1,6 +1,7 @@
 package com.regression.framework.stores;
 
 import com.regression.framework.selenium.handler.IndexPageHandler;
+import com.regression.framework.selenium.handler.OpenAccountPageHandler;
 import com.regression.framework.selenium.handler.OverviewPageHandler;
 import com.regression.framework.selenium.handler.RegisterPageHandler;
 import io.cucumber.spring.ScenarioScope;
@@ -13,12 +14,15 @@ public class ParabankPageStore {
     private final RegisterPageHandler registerPageHandler;
     private final OverviewPageHandler overviewPageHandler;
 
+    private final OpenAccountPageHandler openAccountPageHandler;
     public ParabankPageStore(final IndexPageHandler loginPageHandler,
                              final RegisterPageHandler registerPageHandler,
-                             final OverviewPageHandler overviewPageHandler) {
+                             final OverviewPageHandler overviewPageHandler,
+                             final OpenAccountPageHandler openAccountPageHandler) {
         this.indexPageHandler = loginPageHandler;
         this.registerPageHandler = registerPageHandler;
         this.overviewPageHandler = overviewPageHandler;
+        this.openAccountPageHandler = openAccountPageHandler;
     }
 
     public IndexPageHandler getIndexPageHandler() {
@@ -32,5 +36,9 @@ public class ParabankPageStore {
 
     public OverviewPageHandler getOverviewPageHandler() {
         return overviewPageHandler;
+    }
+
+    public OpenAccountPageHandler getOpenAccountPageHandler() {
+        return openAccountPageHandler;
     }
 }

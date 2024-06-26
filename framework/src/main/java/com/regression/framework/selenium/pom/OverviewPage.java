@@ -12,12 +12,17 @@ import org.springframework.stereotype.Component;
 public class OverviewPage extends BasePage {
     @FindBy(how = How.ID, using = "accountTable")
     private WebElement accountTable;
-
+    @FindBy(how = How.XPATH, using = "//a[@href='openaccount.htm']")
+    private WebElement openNewAccountButton;
     protected OverviewPage(final WebDriverFactory driverFactory) {
         super(driverFactory);
     }
 
     public WebElement getAccountTable() {
         return accountTable;
+    }
+
+    public WebElement getOpenNewAccountButton() {
+        return openNewAccountButton;
     }
 }
