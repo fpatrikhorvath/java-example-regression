@@ -44,7 +44,7 @@ public class OpenAccountPageHandler extends BasePageHandler {
     }
 
     public boolean isAccountCreated() {
-        return openAccountPage.getNewAccountIdButton().isDisplayed();
+        return this.defaultWaitFor().until((driver -> openAccountPage.getNewAccountIdButton().isDisplayed()));
     }
 
     public long getNewAccountId() {

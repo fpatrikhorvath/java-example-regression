@@ -16,7 +16,7 @@ public class OpenAccountPage extends BasePage {
     @FindBy(how = How.ID, using = "fromAccountId")
     private WebElement fromAccountIdDropdown;
 
-    @FindBy(how = How.XPATH, using = "//input[@value='Open New Account']")
+    @FindBy(how = How.XPATH, using = "/html/body/div[1]/div[3]/div[2]/div/div[1]/form/div/input")
     private WebElement openNewAccountButton;
     @FindBy(how = How.ID, using = "newAccountId")
     private WebElement newAccountIdButton;
