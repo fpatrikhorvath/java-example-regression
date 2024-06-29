@@ -14,9 +14,11 @@ import org.springframework.util.StringUtils;
 public class OpenAccountPageHandler extends BasePageHandler {
     private final String PAGE_NAME = "openaccount";
     private final OpenAccountPage openAccountPage;
+
     protected OpenAccountPageHandler(final WebDriverWaitFactory webDriverWaitFactory,
                                      final WebDriverFactory driverFactory,
-                                     final ParabankConfig parabankConfig, final OpenAccountPage openAccountPage) {
+                                     final ParabankConfig parabankConfig,
+                                     final OpenAccountPage openAccountPage) {
         super(webDriverWaitFactory, driverFactory, parabankConfig);
         this.openAccountPage = openAccountPage;
     }
@@ -31,7 +33,8 @@ public class OpenAccountPageHandler extends BasePageHandler {
         String url = StringUtils.replace(parabankConfig.getUrl(), "{pageName}", PAGE_NAME);
         driverFactory.getDriver().get(url);
     }
-    public void fillNewAccountForm(final String type){
+
+    public void fillNewAccountForm(final String type) {
         Select select = new Select(openAccountPage.getAccountTypeDropdown());
         switch (type) {
             case "checking" -> select.selectByVisibleText("CHECKING");
@@ -39,7 +42,9 @@ public class OpenAccountPageHandler extends BasePageHandler {
             default -> throw new RuntimeException("Not an account type parameter");
         }
     }
-    public void sendForm(){
+
+    public void sendForm() {
+        driverWaitFactory.delay(2);
         openAccountPage.getOpenNewAccountButton().click();
     }
 
@@ -48,6 +53,7 @@ public class OpenAccountPageHandler extends BasePageHandler {
     }
 
     public long getNewAccountId() {
+        isAccountCreated();
         return Long.parseLong(openAccountPage.getNewAccountIdButton().getText());
     }
 }

@@ -28,6 +28,7 @@ public class OpenAccountPageSteps extends TestCore {
         getOpenAccountPageHandler().fillNewAccountForm(type);
 
         ContextAccount account = new ContextAccount();
+
         ContextAccount.AccountType accountType = fromValue(type);
         account.setAccountType(accountType);
 
