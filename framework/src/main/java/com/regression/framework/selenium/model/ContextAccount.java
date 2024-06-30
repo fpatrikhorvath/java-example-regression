@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public class ContextAccount {
     private long id;
     private AccountType accountType;
+    private double balance;
+    private double available;
 
     public ContextAccount() {
     }
@@ -26,11 +28,29 @@ public class ContextAccount {
         this.accountType = accountType;
     }
 
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(final double balance) {
+        this.balance = balance;
+    }
+
+    public double getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(final double available) {
+        this.available = available;
+    }
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("ContextAccount{");
         sb.append("id=").append(id);
         sb.append(", accountType=").append(accountType);
+        sb.append(", balance=").append(balance);
+        sb.append(", available=").append(available);
         sb.append('}');
         return sb.toString();
     }

@@ -8,7 +8,6 @@ import com.regression.framework.stores.UserLayerContextStore;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import static com.regression.framework.selenium.model.ContextAccount.AccountType.fromValue;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class OpenAccountPageSteps extends TestCore {
@@ -26,16 +25,14 @@ public class OpenAccountPageSteps extends TestCore {
         getOpenAccountPageHandler().isAt();
 
         getOpenAccountPageHandler().fillNewAccountForm(type);
-
-        ContextAccount account = new ContextAccount();
-
-        ContextAccount.AccountType accountType = fromValue(type);
-        account.setAccountType(accountType);
-
         getOpenAccountPageHandler().sendForm();
+        getOpenAccountPageHandler().openNewAccountActivity();
 
-        account.setId(getOpenAccountPageHandler().getNewAccountId());
-        scenarioContext.storeContextObject(identifier, account);
+//        ContextAccount account = getOpenAccountPageHandler().initContextAccount();
+//        ContextAccount.AccountType accountType = fromValue(type);
+//        account.setAccountType(accountType);
+
+        scenarioContext.storeContextObject(identifier, new ContextAccount());
     }
 
     @Then("a new account is created")
