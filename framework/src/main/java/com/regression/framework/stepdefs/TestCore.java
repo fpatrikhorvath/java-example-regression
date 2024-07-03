@@ -20,7 +20,6 @@ import org.springframework.test.context.ContextConfiguration;
 @SpringBootTest(classes = TestCore.class)
 public class TestCore {
 
-    protected static final String RESPONSE_CODE_CHECK_MESSAGE = "Expected response code does not match with actual.";
     protected final ScenarioContext scenarioContext;
     private final UserLayerContextStore userLayerContextStore;
     private final ParabankPageStore parabankPageStore;

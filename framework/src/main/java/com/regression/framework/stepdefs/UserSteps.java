@@ -35,8 +35,7 @@ public class UserSteps extends TestCore {
         UserDTO user = getUserService().initContextUser(statusString);
 
         Response response = getUserService().registerUser(user);
-        assertThat(response.getStatusCode()).withFailMessage(RESPONSE_CODE_CHECK_MESSAGE)
-                .isEqualTo(responseCode);
+        assertThat(response.getStatusCode()).isEqualTo(responseCode);
 
         if (201 == response.getStatusCode()) {
             UserDTO responseUser = mapperService.mutateObject(response, UserDTO.class);
@@ -51,8 +50,7 @@ public class UserSteps extends TestCore {
         UserDTO expUser = (UserDTO) scenarioContext.getContextObject(contextId);
 
         Response response = getUserService().getUsers();
-        assertThat(response.getStatusCode()).withFailMessage(RESPONSE_CODE_CHECK_MESSAGE)
-                .isEqualTo(HttpStatus.OK.value());
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK.value());
 
         List<UserDTO> userList = mapperService.mutateObjectList(response, UserDTO.class);
 
@@ -69,8 +67,7 @@ public class UserSteps extends TestCore {
     public void deleteUser(final String contextId, final int responseCode) {
         UserDTO user = (UserDTO) scenarioContext.getContextObject(contextId);
         Response response = getUserService().deleteUser(user.getId());
-        assertThat(response.getStatusCode()).withFailMessage(RESPONSE_CODE_CHECK_MESSAGE)
-                .isEqualTo(responseCode);
+        assertThat(response.getStatusCode()).isEqualTo(responseCode);
 
         if (204 != response.getStatusCode()) {
             scenarioContext.storeErrorResponse(response);
@@ -81,8 +78,7 @@ public class UserSteps extends TestCore {
     public void verifyThatUserDoesNotExist(final String contextId) {
         UserDTO user = (UserDTO) scenarioContext.getContextObject(contextId);
         Response response = getUserService().getUsers();
-        assertThat(response.getStatusCode()).withFailMessage(RESPONSE_CODE_CHECK_MESSAGE)
-                .isEqualTo(HttpStatus.OK.value());
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK.value());
 
         List<UserDTO> userList = mapperService.mutateObjectList(response, UserDTO.class);
 

@@ -13,8 +13,7 @@ import java.util.List;
 public class MapperService {
     private static final ObjectMapper mapper = new ObjectMapper();
 
-    public <T> T mutateObject(final Response response,
-                              final Class<T> clazz) {
+    public <T> T mutateObject(final Response response, final Class<T> clazz) {
         try {
             return mapper.readValue(response.getBody().asString(), clazz);
         } catch (Exception e) {
