@@ -33,13 +33,6 @@ public class OpenAccountPageHandler extends BasePageHandler {
         String url = StringUtils.replace(parabankConfig.getUrl(), "{pageName}", PAGE_NAME);
         driverFactory.getDriver().get(url);
     }
-//    public ContextAccount initContextAccount() {
-//        ContextAccount account = new ContextAccount();
-//        account.setId(Long.parseLong(openAccountPage.getNewAccountIdButton()));
-//        account.setBalance(Double.parseDouble(openAccountPage));
-//        account.setAvailable(Double.parseDouble());
-//        return account;
-//    }
 
     public void fillNewAccountForm(final String type) {
         Select select = new Select(openAccountPage.getAccountTypeDropdown());
@@ -51,7 +44,6 @@ public class OpenAccountPageHandler extends BasePageHandler {
     }
 
     public void sendForm() {
-        driverWaitFactory.delay(2);
         openAccountPage.getOpenNewAccountButton().click();
     }
 
@@ -62,6 +54,5 @@ public class OpenAccountPageHandler extends BasePageHandler {
     public void openNewAccountActivity() {
         openAccountPage.getNewAccountIdButton().click();
     }
-
 
 }

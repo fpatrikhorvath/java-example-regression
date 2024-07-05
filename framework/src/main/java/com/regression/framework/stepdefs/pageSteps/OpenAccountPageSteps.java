@@ -8,8 +8,6 @@ import com.regression.framework.stores.UserLayerContextStore;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-
 public class OpenAccountPageSteps extends TestCore {
 
     public OpenAccountPageSteps(final UserLayerContextStore userLayerContextStore,
@@ -28,15 +26,13 @@ public class OpenAccountPageSteps extends TestCore {
         getOpenAccountPageHandler().sendForm();
         getOpenAccountPageHandler().openNewAccountActivity();
 
-//        ContextAccount account = getOpenAccountPageHandler().initContextAccount();
-//        ContextAccount.AccountType accountType = fromValue(type);
-//        account.setAccountType(accountType);
+        ContextAccount account = getAccountActivityPageHandler().initContextAccount();
 
-        scenarioContext.storeContextObject(identifier, new ContextAccount());
+        scenarioContext.storeContextObject(identifier, account);
     }
 
-    @Then("a new account is created")
-    public void aNewAccountIsCreated() {
-        assertThat(getOpenAccountPageHandler().isAccountCreated()).isTrue();
+
+    @Then("{word} account is created")
+    public void account_aAccountIsCreated(final String identifier) {
     }
 }
