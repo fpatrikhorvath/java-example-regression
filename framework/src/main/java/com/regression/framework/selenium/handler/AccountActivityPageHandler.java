@@ -41,8 +41,8 @@ public class AccountActivityPageHandler extends BasePageHandler {
         ContextAccount account = new ContextAccount();
         account.setId(Long.parseLong(activityPage.getAccountIdentifier().getText()));
         //TODO: service
-        account.setBalance(Double.parseDouble(activityPage.getBalance().getText().replace("$","")));
-        account.setAvailable(Double.parseDouble(activityPage.getBalance().getText().replace("$","")));
+        account.setBalance(Double.parseDouble(activityPage.getBalance().getText().replace("$", "")));
+        account.setAvailable(Double.parseDouble(activityPage.getBalance().getText().replace("$", "")));
         logger.debug("Account: {}", account);
         return account;
     }

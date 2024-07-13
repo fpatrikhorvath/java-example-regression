@@ -19,6 +19,7 @@ public class OpenAccountPage extends BasePage {
     private WebElement openNewAccountButton;
     @FindBy(how = How.ID, using = "newAccountId")
     private WebElement newAccountIdButton;
+
     protected OpenAccountPage(final WebDriverFactory driverFactory) {
         super(driverFactory);
     }

@@ -1,5 +1,6 @@
 Feature: Open new account
 
+  @bug
   Scenario: Open a new account
     Given I am on the register page
     Given I sign up with correct credentials and store it as user_A

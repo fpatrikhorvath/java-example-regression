@@ -6,7 +6,6 @@ import jakarta.annotation.PostConstruct;
 import org.openqa.selenium.support.PageFactory;
 
 @ScenarioScope
-
 public abstract class BasePage {
     private final WebDriverFactory driverFactory;
 

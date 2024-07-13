@@ -12,6 +12,7 @@ public class ParabankPageStore {
     private final OverviewPageHandler overviewPageHandler;
     private final AccountActivityPageHandler accountActivityPageHandler;
     private final OpenAccountPageHandler openAccountPageHandler;
+
     public ParabankPageStore(final IndexPageHandler loginPageHandler,
                              final RegisterPageHandler registerPageHandler,
                              final OverviewPageHandler overviewPageHandler,

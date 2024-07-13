@@ -52,7 +52,8 @@ public class TestCore {
     protected OpenAccountPageHandler getOpenAccountPageHandler() {
         return parabankPageStore.getOpenAccountPageHandler();
     }
-    protected AccountActivityPageHandler getAccountActivityPageHandler(){
+
+    protected AccountActivityPageHandler getAccountActivityPageHandler() {
         return parabankPageStore.getAccountActivityPageHandler();
     }
 }

@@ -58,9 +58,7 @@ public class ContextAccount {
     public enum AccountType {
         CHECKING("checking"),
 
-        SAVINGS("savings")
-
-        ;
+        SAVINGS("savings");
 
         private String type;
 

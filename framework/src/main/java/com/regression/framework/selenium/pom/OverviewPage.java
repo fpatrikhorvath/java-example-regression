@@ -14,6 +14,7 @@ public class OverviewPage extends BasePage {
     private WebElement accountTable;
     @FindBy(how = How.XPATH, using = "//a[@href='openaccount.htm']")
     private WebElement openNewAccountButton;
+
     protected OverviewPage(final WebDriverFactory driverFactory) {
         super(driverFactory);
     }

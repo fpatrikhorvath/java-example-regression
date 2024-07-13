@@ -21,7 +21,8 @@ public class WebDriverWaitFactory {
     public Wait<WebDriver> defaultWait(final WebDriver driver) {
         return new FluentWait<>(driver).withTimeout(Duration.ofSeconds(seleniumConfig.getTimeout()));
     }
-    public void delay(final int seconds){
+
+    public void delay(final int seconds) {
         try {
             Thread.sleep(seconds * 1000L);
         } catch (InterruptedException e) {

@@ -18,6 +18,7 @@ public class AccountActivityPage extends BasePage {
     private WebElement balance;
     @FindBy(how = How.XPATH, using = "//*[@id=\"available\"]")
     private WebElement available;
+
     protected AccountActivityPage(final WebDriverFactory driverFactory) {
         super(driverFactory);
     }
