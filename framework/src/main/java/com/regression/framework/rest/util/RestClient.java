@@ -68,7 +68,8 @@ public class RestClient {
         StringBuilder curlCommand = new StringBuilder("curl -X ").append(requestType).append(" ");
 
         headers.forEach((key, value) ->
-                value.forEach(val -> curlCommand.append("-H \"").append(key).append(": ").append(val).append("\" ")));
+                value.forEach(val ->
+                        curlCommand.append("-H \"").append(key).append(": ").append(val).append("\" ")));
 
         curlCommand.append(url).append(endpoint).append(" ");
 

@@ -1,9 +1,7 @@
 package com.regression.framework.stepdefs;
 
 import com.regression.framework.context.ScenarioContext;
-import com.regression.framework.selenium.handler.IndexPageHandler;
-import com.regression.framework.selenium.handler.OverviewPageHandler;
-import com.regression.framework.selenium.handler.RegisterPageHandler;
+import com.regression.framework.selenium.handler.*;
 import com.regression.framework.service.BookService;
 import com.regression.framework.service.UserService;
 import com.regression.framework.stores.ParabankPageStore;
@@ -19,7 +17,6 @@ import org.springframework.test.context.ContextConfiguration;
 @SpringBootTest(classes = TestCore.class)
 public class TestCore {
 
-    protected static final String RESPONSE_CODE_CHECK_MESSAGE = "Expected response code does not match with actual.";
     protected final ScenarioContext scenarioContext;
     private final UserLayerContextStore userLayerContextStore;
     private final ParabankPageStore parabankPageStore;
@@ -48,7 +45,15 @@ public class TestCore {
         return parabankPageStore.getRegisterPageHandler();
     }
 
-    protected OverviewPageHandler getOverviewPage() {
+    protected OverviewPageHandler getOverviewPageHandler() {
         return parabankPageStore.getOverviewPageHandler();
+    }
+
+    protected OpenAccountPageHandler getOpenAccountPageHandler() {
+        return parabankPageStore.getOpenAccountPageHandler();
+    }
+
+    protected AccountActivityPageHandler getAccountActivityPageHandler() {
+        return parabankPageStore.getAccountActivityPageHandler();
     }
 }

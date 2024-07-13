@@ -9,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,7 +18,6 @@ public class WebDriverFactory {
     private static WebDriver driver;
     private final SeleniumConfig seleniumConfig;
 
-    @Autowired
     public WebDriverFactory(final SeleniumConfig seleniumConfig) {
         this.seleniumConfig = seleniumConfig;
 

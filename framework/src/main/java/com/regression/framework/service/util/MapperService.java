@@ -13,8 +13,7 @@ import java.util.List;
 public class MapperService {
     private static final ObjectMapper mapper = new ObjectMapper();
 
-    public <T> T mutateObject(final Response response,
-                              final Class<T> clazz) {
+    public <T> T mutateObject(final Response response, final Class<T> clazz) {
         try {
             return mapper.readValue(response.getBody().asString(), clazz);
         } catch (Exception e) {
@@ -23,8 +22,7 @@ public class MapperService {
         }
     }
 
-    public <T> List<T> mutateObjectList(final Response response,
-                                        final Class<T> clazz) {
+    public <T> List<T> mutateObjectList(final Response response, final Class<T> clazz) {
         try {
             String responseBody = response.getBody().asString();
             return mapper.readValue(responseBody, mapper.getTypeFactory().constructCollectionType(List.class, clazz));

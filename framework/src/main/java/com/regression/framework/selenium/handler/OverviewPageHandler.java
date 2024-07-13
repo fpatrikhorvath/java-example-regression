@@ -35,4 +35,7 @@ public class OverviewPageHandler extends BasePageHandler {
         throw new RuntimeException("Not implemented yet");
     }
 
+    public void navigateToOpenNewAccount() {
+        overviewPage.getOpenNewAccountButton().click();
+    }
 }

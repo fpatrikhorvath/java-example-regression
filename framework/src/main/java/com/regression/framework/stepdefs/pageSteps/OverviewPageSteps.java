@@ -18,6 +18,6 @@ public class OverviewPageSteps extends TestCore {
 
     @Then("verify that the user is logged in")
     public void verifyThatTheUserIsLoggedIm() {
-        assertThat(getOverviewPage().isAt()).isTrue();
+        assertThat(getOverviewPageHandler().isAt()).isTrue();
     }
 }

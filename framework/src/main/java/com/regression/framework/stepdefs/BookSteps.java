@@ -36,9 +36,7 @@ public class BookSteps extends TestCore {
         BookDTO book = getBookService().initContextBook(user.getId());
 
         Response response = getBookService().registerBook(book);
-        assertThat(response.getStatusCode()).
-                withFailMessage(RESPONSE_CODE_CHECK_MESSAGE)
-                .isEqualTo(responseCode);
+        assertThat(response.getStatusCode()).isEqualTo(responseCode);
 
         if (201 == responseCode) {
             BookDTO responseBook = mapperService.mutateObject(response, BookDTO.class);
@@ -57,7 +55,7 @@ public class BookSteps extends TestCore {
         BookDTO book = (BookDTO) scenarioContext.getContextObject(bookId);
 
         Response response = getBookService().getBooks(book);
-        assertThat(response.getStatusCode()).withFailMessage(RESPONSE_CODE_CHECK_MESSAGE).isEqualTo(HttpStatus.OK);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK.value());
 
         List<BookDTO> bookDTOList = mapperService.mutateObjectList(response, BookDTO.class);
 
@@ -75,8 +73,7 @@ public class BookSteps extends TestCore {
         BookDTO expBook = (BookDTO) scenarioContext.getContextObject(bookId);
 
         Response response = getBookService().getBooks(expBook);
-        assertThat(response.getStatusCode()).withFailMessage(RESPONSE_CODE_CHECK_MESSAGE)
-                .isEqualTo(HttpStatus.OK.value());
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK.value());
 
         List<BookDTO> bookDTOList = mapperService.mutateObjectList(response, BookDTO.class);
         BookDTO actBook = bookDTOList
@@ -95,7 +92,6 @@ public class BookSteps extends TestCore {
         BookDTO book = (BookDTO) scenarioContext.getContextObject(bookId);
 
         Response response = getBookService().deleteBook(user, book);
-        assertThat(response.getStatusCode()).withFailMessage(RESPONSE_CODE_CHECK_MESSAGE)
-                .isEqualTo(responseCode);
+        assertThat(response.getStatusCode()).isEqualTo(responseCode);
     }
 }
