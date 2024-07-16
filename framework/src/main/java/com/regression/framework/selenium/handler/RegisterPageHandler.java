@@ -33,7 +33,6 @@ public class RegisterPageHandler extends BasePageHandler {
 
     public ContextUser initContextUser() {
         ContextUser user = new ContextUser();
-
         user.setFirstName(fakerService.name().firstName());
         user.setLastName(fakerService.name().lastName());
         user.setStreet(fakerService.address().streetAddress());
@@ -52,7 +51,6 @@ public class RegisterPageHandler extends BasePageHandler {
     }
 
     public void fillRegisterForm(final ContextUser user) {
-
         registerPage.getFirstNameInputField().sendKeys(user.getFirstName());
         registerPage.getLastNameInputField().sendKeys(user.getLastName());
         registerPage.getStreetInputField().sendKeys(user.getStreet());
@@ -75,7 +73,6 @@ public class RegisterPageHandler extends BasePageHandler {
 
     @Override
     public boolean isAt() {
-
         return this.defaultWaitFor().until((driver -> registerPage.getFirstNameInputField().isDisplayed()));
     }
 

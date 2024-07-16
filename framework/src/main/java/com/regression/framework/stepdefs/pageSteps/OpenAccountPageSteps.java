@@ -18,7 +18,6 @@ public class OpenAccountPageSteps extends TestCore {
 
     @When("I open a new account with type of {word} and store it as {word}")
     public void iOpenANewAccountWithTypeOfAndStoreItAs(final String type, final String identifier) {
-
         getOverviewPageHandler().navigateToOpenNewAccount();
         getOpenAccountPageHandler().isAt();
 
@@ -27,7 +26,6 @@ public class OpenAccountPageSteps extends TestCore {
         getOpenAccountPageHandler().openNewAccountActivity();
 
         ContextAccount account = getAccountActivityPageHandler().initContextAccount();
-
         scenarioContext.storeContextObject(identifier, account);
     }
 
