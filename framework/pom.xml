@@ -24,11 +24,11 @@
         <selenium.version>4.17.0</selenium.version>
         <jackson.version>2.17.1</jackson.version>
         <faker.version>0.12</faker.version>
+        <allure-cucumber7.version>2.28.0</allure-cucumber7.version>
     </properties>
 
 
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-test</artifactId>
@@ -101,6 +101,12 @@
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
             <version>${faker.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-cucumber7-jvm</artifactId>
+            <version>${allure-cucumber7.version}</version>
         </dependency>
     </dependencies>
 </project>
