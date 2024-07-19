@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 @ScenarioScope
 public class BookService {
     private static final Logger LOG = LogManager.getLogger(BookService.class);
-
     private final BookClient bookClient;
     private final FakerService fakerService;
 
@@ -28,7 +27,6 @@ public class BookService {
 
     public BookDTO initContextBook(final Long userId) {
         BookDTO book = new BookDTO();
-
         book.setUserId(userId);
         book.setAuthor(fakerService.book().author());
         book.setTitle(fakerService.book().title());
@@ -38,7 +36,6 @@ public class BookService {
     }
 
     public Response registerBook(final BookDTO book) {
-
         CreateBookForUserRequestDTO body = new CreateBookForUserRequestDTO();
         body.setAuthor(book.getAuthor());
         body.setTitle(book.getTitle());
@@ -51,8 +48,7 @@ public class BookService {
         return bookClient.getBooksForUser(book.getUserId());
     }
 
-    public Response deleteBook(final UserDTO user,
-                               final BookDTO book) {
+    public Response deleteBook(final UserDTO user, final BookDTO book) {
         return bookClient.deleteBook(user.getId(), book.getUserId());
     }
 }

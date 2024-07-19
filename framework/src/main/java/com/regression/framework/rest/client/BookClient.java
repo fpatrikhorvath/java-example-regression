@@ -27,8 +27,7 @@ public class BookClient {
     }
 
     public Response postBook(final Long userId, final CreateBookForUserRequestDTO requestBody) {
-        String endpoint = StringUtils
-                .replace(POST_BOOK_PATH, "{userId}", String.valueOf(userId));
+        String endpoint = StringUtils.replace(POST_BOOK_PATH, "{userId}", String.valueOf(userId));
         return restClient.POST(endpoint, requestBody);
     }
 
@@ -37,14 +36,11 @@ public class BookClient {
         String endpoint = StringUtils
                 .replace(DELETE_BOOK_PATH, "{userId}", String.valueOf(userId))
                 .replace("{bookId}", String.valueOf(bookId));
-
         return restClient.DELETE(endpoint);
     }
 
     public Response getBooksForUser(final Long userId) {
-        String endpoint = StringUtils
-                .replace(GET_BOOK_PATH, "{userId}", String.valueOf(userId));
-
+        String endpoint = StringUtils.replace(GET_BOOK_PATH, "{userId}", String.valueOf(userId));
         return restClient.GET(endpoint);
     }
 }

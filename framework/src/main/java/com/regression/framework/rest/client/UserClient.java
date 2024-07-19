@@ -32,9 +32,7 @@ public class UserClient {
 
 
     public Response deleteUser(final Long userId) {
-        String endpoint = StringUtils
-                .replace(DELETE_USER_PATH, "{userId}", String.valueOf(userId));
-
+        String endpoint = StringUtils.replace(DELETE_USER_PATH, "{userId}", String.valueOf(userId));
         return restClient.DELETE(endpoint);
     }
 

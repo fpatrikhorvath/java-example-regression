@@ -33,7 +33,6 @@ public class UserSteps extends TestCore {
     public void createANewUserOfTypeAndStoreItAs
             (final String statusString, final String contextId, final int responseCode) {
         UserDTO user = getUserService().initContextUser(statusString);
-
         Response response = getUserService().registerUser(user);
         assertThat(response.getStatusCode()).isEqualTo(responseCode);
 
@@ -48,7 +47,6 @@ public class UserSteps extends TestCore {
     @Then("verify that user {word} exists")
     public void verifyThatUserExists(final String contextId) {
         UserDTO expUser = (UserDTO) scenarioContext.getContextObject(contextId);
-
         Response response = getUserService().getUsers();
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK.value());
 

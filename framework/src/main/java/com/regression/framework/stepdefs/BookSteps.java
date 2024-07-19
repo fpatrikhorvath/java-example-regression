@@ -31,10 +31,8 @@ public class BookSteps extends TestCore {
     @When("(create )a new book for user {word} and store it as {word} -> {int}")
     public void createANewBookForUserAndStoreItAs
             (final String userId, final String bookId, final int responseCode) {
-
         UserDTO user = (UserDTO) scenarioContext.getContextObject(userId);
         BookDTO book = getBookService().initContextBook(user.getId());
-
         Response response = getBookService().registerBook(book);
         assertThat(response.getStatusCode()).isEqualTo(responseCode);
 
@@ -44,7 +42,6 @@ public class BookSteps extends TestCore {
 
         } else {
             scenarioContext.storeErrorResponse(response);
-
         }
         scenarioContext.storeContextObject(bookId, book);
     }

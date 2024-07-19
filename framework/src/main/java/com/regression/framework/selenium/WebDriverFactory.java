@@ -21,7 +21,7 @@ public class WebDriverFactory {
     public WebDriverFactory(final SeleniumConfig seleniumConfig) {
         this.seleniumConfig = seleniumConfig;
 
-        if (driver == null) {
+        if (!WebDriverInitializationListener.isInitialized()) {
             logger.info("Initializing the {} driver", seleniumConfig.getBrowserType());
 
             switch (seleniumConfig.getBrowserType()) {
@@ -56,9 +56,9 @@ public class WebDriverFactory {
     }
 
     public void tearDown() {
-        if (driver != null) {
+        if (WebDriverInitializationListener.isInitialized()) {
             driver.quit();
-            driver = null;
+            WebDriverInitializationListener.setIsInitialized(false);
         }
     }
 
