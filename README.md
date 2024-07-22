@@ -13,7 +13,11 @@ To run the mocked server:
 $ node server/server.js
 ```
 
-To run the tests:
+To run the allure report:
+
+```
+$ allure serve
+```
 
 Select the proper test runner or the feature file and run by clicking on the run the button
 
@@ -22,6 +26,7 @@ Java 21/Maven/Springboot
 Rest Assured
 Selenium
 Cucumber
+Allure
 
 ## License
 MIT
