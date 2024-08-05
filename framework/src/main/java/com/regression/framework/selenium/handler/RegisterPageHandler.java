@@ -3,6 +3,7 @@ package com.regression.framework.selenium.handler;
 import com.regression.framework.config.ParabankConfig;
 import com.regression.framework.selenium.WebDriverFactory;
 import com.regression.framework.selenium.WebDriverWaitFactory;
+import com.regression.framework.selenium.handlerSchemas.IRegisterPageHandler;
 import com.regression.framework.selenium.model.ContextUser;
 import com.regression.framework.selenium.pom.RegisterPage;
 import com.regression.framework.service.util.FakerService;
@@ -15,7 +16,7 @@ import org.springframework.util.StringUtils;
 
 @ScenarioScope
 @Service
-public class RegisterPageHandler extends BasePageHandler {
+public class RegisterPageHandler extends BasePageHandler implements IRegisterPageHandler {
     private static final Logger LOG = LogManager.getLogger(RegisterPageHandler.class);
     private final String PAGE_NAME = "register";
     private final RegisterPage registerPage;

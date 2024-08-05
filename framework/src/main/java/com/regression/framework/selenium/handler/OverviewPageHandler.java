@@ -3,6 +3,7 @@ package com.regression.framework.selenium.handler;
 import com.regression.framework.config.ParabankConfig;
 import com.regression.framework.selenium.WebDriverFactory;
 import com.regression.framework.selenium.WebDriverWaitFactory;
+import com.regression.framework.selenium.handlerSchemas.IOverviewPageHandler;
 import com.regression.framework.selenium.pom.OverviewPage;
 import io.cucumber.spring.ScenarioScope;
 import org.apache.logging.log4j.LogManager;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 @ScenarioScope
 @Service
-public class OverviewPageHandler extends BasePageHandler {
+public class OverviewPageHandler extends BasePageHandler implements IOverviewPageHandler {
     private static final Logger LOG = LogManager.getLogger(OverviewPageHandler.class);
     private final String PAGE_NAME = "register";
     private final OverviewPage overviewPage;

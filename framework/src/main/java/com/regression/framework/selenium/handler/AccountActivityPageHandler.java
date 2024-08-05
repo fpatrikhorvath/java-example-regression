@@ -3,6 +3,7 @@ package com.regression.framework.selenium.handler;
 import com.regression.framework.config.ParabankConfig;
 import com.regression.framework.selenium.WebDriverFactory;
 import com.regression.framework.selenium.WebDriverWaitFactory;
+import com.regression.framework.selenium.handlerSchemas.IAccountActivityPageHandler;
 import com.regression.framework.selenium.model.ContextAccount;
 import com.regression.framework.selenium.pom.AccountActivityPage;
 import com.regression.framework.service.util.ParserService;
@@ -14,7 +15,7 @@ import org.springframework.util.StringUtils;
 
 @ScenarioScope
 @Service
-public class AccountActivityPageHandler extends BasePageHandler {
+public class AccountActivityPageHandler extends BasePageHandler implements IAccountActivityPageHandler {
     private static final Logger logger = LogManager.getLogger(AccountActivityPageHandler.class);
     private final String PAGE_NAME = "openaccount";
     private final AccountActivityPage activityPage;

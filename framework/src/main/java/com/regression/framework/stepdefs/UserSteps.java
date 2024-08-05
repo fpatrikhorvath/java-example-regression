@@ -32,8 +32,8 @@ public class UserSteps extends TestCore {
     @Given("(create )a new user of status {word} and store it as {word} -> {int}")
     public void createANewUserOfTypeAndStoreItAs
             (final String statusString, final String contextId, final int responseCode) {
-        UserDTO user = getUserService().initContextUser(statusString);
-        Response response = getUserService().registerUser(user);
+        final UserDTO user = getUserService().initContextUser(statusString);
+        final Response response = getUserService().registerUser(user);
         assertThat(response.getStatusCode()).isEqualTo(responseCode);
 
         if (201 == response.getStatusCode()) {
@@ -46,13 +46,13 @@ public class UserSteps extends TestCore {
 
     @Then("verify that user {word} exists")
     public void verifyThatUserExists(final String contextId) {
-        UserDTO expUser = (UserDTO) scenarioContext.getContextObject(contextId);
-        Response response = getUserService().getUsers();
+        final UserDTO expUser = (UserDTO) scenarioContext.getContextObject(contextId);
+        final Response response = getUserService().getUsers();
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK.value());
 
-        List<UserDTO> userList = mapperService.mutateObjectList(response, UserDTO.class);
+        final List<UserDTO> userList = mapperService.mutateObjectList(response, UserDTO.class);
 
-        UserDTO actUser = Objects.requireNonNull(userList)
+        final UserDTO actUser = Objects.requireNonNull(userList)
                 .stream()
                 .filter(u -> Objects.equals(u.getName(), expUser.getName()))
                 .findFirst()
@@ -63,8 +63,8 @@ public class UserSteps extends TestCore {
 
     @When("delete user {word} -> {int}")
     public void deleteUser(final String contextId, final int responseCode) {
-        UserDTO user = (UserDTO) scenarioContext.getContextObject(contextId);
-        Response response = getUserService().deleteUser(user.getId());
+        final UserDTO user = (UserDTO) scenarioContext.getContextObject(contextId);
+        final Response response = getUserService().deleteUser(user.getId());
         assertThat(response.getStatusCode()).isEqualTo(responseCode);
 
         if (204 != response.getStatusCode()) {
@@ -74,13 +74,13 @@ public class UserSteps extends TestCore {
 
     @Then("verify that user {word} does not exist")
     public void verifyThatUserDoesNotExist(final String contextId) {
-        UserDTO user = (UserDTO) scenarioContext.getContextObject(contextId);
-        Response response = getUserService().getUsers();
+        final UserDTO user = (UserDTO) scenarioContext.getContextObject(contextId);
+        final Response response = getUserService().getUsers();
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK.value());
 
-        List<UserDTO> userList = mapperService.mutateObjectList(response, UserDTO.class);
+        final List<UserDTO> userList = mapperService.mutateObjectList(response, UserDTO.class);
 
-        UserDTO actUser = Objects.requireNonNull(userList)
+        final UserDTO actUser = Objects.requireNonNull(userList)
                 .stream()
                 .filter(u -> Objects.equals(u.getName(), user.getName()))
                 .findFirst()

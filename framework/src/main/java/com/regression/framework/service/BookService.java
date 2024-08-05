@@ -26,7 +26,7 @@ public class BookService {
 
 
     public BookDTO initContextBook(final Long userId) {
-        BookDTO book = new BookDTO();
+        final BookDTO book = new BookDTO();
         book.setUserId(userId);
         book.setAuthor(fakerService.book().author());
         book.setTitle(fakerService.book().title());
@@ -36,7 +36,7 @@ public class BookService {
     }
 
     public Response registerBook(final BookDTO book) {
-        CreateBookForUserRequestDTO body = new CreateBookForUserRequestDTO();
+        final CreateBookForUserRequestDTO body = new CreateBookForUserRequestDTO();
         body.setAuthor(book.getAuthor());
         body.setTitle(book.getTitle());
 

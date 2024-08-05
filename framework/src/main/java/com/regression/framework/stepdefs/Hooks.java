@@ -25,7 +25,7 @@ public class Hooks extends TestCore {
     public void tearDown(final Scenario scenario) {
 
         if (scenario.isFailed() && WebDriverInitializationListener.isInitialized()) {
-            byte[] screenshot = ((TakesScreenshot) webDriverFactory.getDriver()).getScreenshotAs(OutputType.BYTES);
+            final byte[] screenshot = ((TakesScreenshot) webDriverFactory.getDriver()).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", "Screenshot");
         }
 

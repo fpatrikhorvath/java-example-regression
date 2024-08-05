@@ -3,6 +3,7 @@ package com.regression.framework.selenium.handler;
 import com.regression.framework.config.ParabankConfig;
 import com.regression.framework.selenium.WebDriverFactory;
 import com.regression.framework.selenium.WebDriverWaitFactory;
+import com.regression.framework.selenium.handlerSchemas.IOpenAccountPageHandler;
 import com.regression.framework.selenium.pom.OpenAccountPage;
 import io.cucumber.spring.ScenarioScope;
 import org.openqa.selenium.support.ui.Select;
@@ -11,7 +12,7 @@ import org.springframework.util.StringUtils;
 
 @ScenarioScope
 @Service
-public class OpenAccountPageHandler extends BasePageHandler {
+public class OpenAccountPageHandler extends BasePageHandler implements IOpenAccountPageHandler {
     private final String PAGE_NAME = "openaccount";
     private final OpenAccountPage openAccountPage;
 

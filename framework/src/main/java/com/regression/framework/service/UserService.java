@@ -25,8 +25,8 @@ public class UserService {
     }
 
     public UserDTO initContextUser(final String statusString) {
-        UserDTO user = new UserDTO();
-        UserDTO.StatusEnum status = UserDTO.StatusEnum.valueOf(statusString);
+        final UserDTO user = new UserDTO();
+        final UserDTO.StatusEnum status = UserDTO.StatusEnum.valueOf(statusString);
         user.setName(fakerService.name().fullName());
         user.setEmail(fakerService.name().username() + "@gmail.com");
         user.setStatus(status);
@@ -36,8 +36,8 @@ public class UserService {
     }
 
     public Response registerUser(final UserDTO user) {
-        CreateUserRequestDTO body = new CreateUserRequestDTO();
-        CreateUserRequestDTO.StatusEnum status = CreateUserRequestDTO.StatusEnum.valueOf(user.getStatus().toString());
+        final CreateUserRequestDTO body = new CreateUserRequestDTO();
+        final CreateUserRequestDTO.StatusEnum status = CreateUserRequestDTO.StatusEnum.valueOf(user.getStatus().toString());
         body.setName(user.getName());
         body.setEmail(user.getEmail());
         body.setStatus(status);

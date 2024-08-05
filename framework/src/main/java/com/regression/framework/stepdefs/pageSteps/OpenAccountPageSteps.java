@@ -25,7 +25,7 @@ public class OpenAccountPageSteps extends TestCore {
         getOpenAccountPageHandler().sendForm();
         getOpenAccountPageHandler().openNewAccountActivity();
 
-        ContextAccount account = getAccountActivityPageHandler().initContextAccount();
+        final ContextAccount account = getAccountActivityPageHandler().initContextAccount();
         scenarioContext.storeContextObject(identifier, account);
     }
 
