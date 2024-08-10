@@ -38,12 +38,12 @@ public class AccountActivityPageHandler extends BasePageHandler implements IAcco
 
     @Override
     public void goTo() {
-        String url = StringUtils.replace(parabankConfig.getUrl(), "{pageName}", PAGE_NAME);
+        final String url = StringUtils.replace(parabankConfig.getUrl(), "{pageName}", PAGE_NAME);
         driverFactory.getDriver().get(url);
     }
 
     public ContextAccount initContextAccount() {
-        ContextAccount account = new ContextAccount();
+        final ContextAccount account = new ContextAccount();
         account.setId(Long.parseLong(activityPage.getAccountIdentifier().getText()));
         account.setBalance(parserService.parseDollar(activityPage.getBalance().getText()));
         account.setAvailable(parserService.parseDollar(activityPage.getAvailable().getText()));

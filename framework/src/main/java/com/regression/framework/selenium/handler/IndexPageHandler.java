@@ -44,7 +44,7 @@ public class IndexPageHandler extends BasePageHandler implements IIndexpagehandl
 
     @Override
     public void goTo() {
-        String url = StringUtils.replace(parabankConfig.getUrl(), "{pageName}", PAGE_NAME);
+        final String url = StringUtils.replace(parabankConfig.getUrl(), "{pageName}", PAGE_NAME);
         driverFactory.getDriver().get(url);
     }
 }

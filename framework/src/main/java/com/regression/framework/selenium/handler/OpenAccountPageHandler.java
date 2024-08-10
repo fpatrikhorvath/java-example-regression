@@ -31,12 +31,12 @@ public class OpenAccountPageHandler extends BasePageHandler implements IOpenAcco
 
     @Override
     public void goTo() {
-        String url = StringUtils.replace(parabankConfig.getUrl(), "{pageName}", PAGE_NAME);
+        final String url = StringUtils.replace(parabankConfig.getUrl(), "{pageName}", PAGE_NAME);
         driverFactory.getDriver().get(url);
     }
 
     public void fillNewAccountForm(final String type) {
-        Select select = new Select(openAccountPage.getAccountTypeDropdown());
+        final Select select = new Select(openAccountPage.getAccountTypeDropdown());
         switch (type) {
             case "checking" -> select.selectByVisibleText("CHECKING");
             case "savings" -> select.selectByVisibleText("SAVINGS");

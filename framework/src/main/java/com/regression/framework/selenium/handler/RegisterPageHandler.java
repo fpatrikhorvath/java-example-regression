@@ -33,7 +33,7 @@ public class RegisterPageHandler extends BasePageHandler implements IRegisterPag
     }
 
     public ContextUser initContextUser() {
-        ContextUser user = new ContextUser();
+        final ContextUser user = new ContextUser();
         user.setFirstName(fakerService.name().firstName());
         user.setLastName(fakerService.name().lastName());
         user.setStreet(fakerService.address().streetAddress());
@@ -87,7 +87,7 @@ public class RegisterPageHandler extends BasePageHandler implements IRegisterPag
 
     @Override
     public void goTo() {
-        String url = StringUtils.replace(parabankConfig.getUrl(), "{pageName}", PAGE_NAME);
+        final String url = StringUtils.replace(parabankConfig.getUrl(), "{pageName}", PAGE_NAME);
         driverFactory.getDriver().get(url);
     }
 

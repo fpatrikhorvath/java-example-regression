@@ -36,7 +36,7 @@ public class WebDriverFactory {
     }
 
     private ChromeDriver initChromeDriver() {
-        ChromeOptions options = new ChromeOptions();
+        final ChromeOptions options = new ChromeOptions();
 
         if (seleniumConfig.isHeadless()) {
             options.addArguments("--headless");
@@ -46,7 +46,7 @@ public class WebDriverFactory {
     }
 
     private FirefoxDriver initFirefoxDriver() {
-        FirefoxOptions options = new FirefoxOptions();
+        final FirefoxOptions options = new FirefoxOptions();
 
         if (seleniumConfig.isHeadless()) {
             options.addArguments("--headless");
