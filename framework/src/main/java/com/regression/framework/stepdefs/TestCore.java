@@ -18,15 +18,16 @@ import org.springframework.test.context.ContextConfiguration;
 public class TestCore {
 
     protected final ScenarioContext scenarioContext;
+
     private final UserLayerContextStore userLayerContextStore;
-    private final ParabankPageStore parabankPageStore;
+    private final ParabankPageStore     parabankPageStore;
 
     public TestCore(final UserLayerContextStore userLayerContextStore,
                     final ScenarioContext scenarioContext,
                     final ParabankPageStore parabankPageStore) {
         this.userLayerContextStore = userLayerContextStore;
-        this.scenarioContext = scenarioContext;
-        this.parabankPageStore = parabankPageStore;
+        this.scenarioContext       = scenarioContext;
+        this.parabankPageStore     = parabankPageStore;
     }
 
     protected UserService getUserService() {

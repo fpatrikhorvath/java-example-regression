@@ -54,8 +54,8 @@ public class RegisterPageSteps extends TestCore {
 
     @Then("verify that the user {word} is registered")
     public void verifyThatTheUserIsRegistered(final String identifier) {
-        final ContextUser user = (ContextUser) scenarioContext.getContextObject(identifier);
-        final String expectedWelcomeMessage = "Welcome ".concat(user.getUsername());
+        final ContextUser user                   = (ContextUser) scenarioContext.getContextObject(identifier);
+        final String      expectedWelcomeMessage = "Welcome ".concat(user.getUsername());
         assertThat(getRegisterPageHandler().getWelcomeMessage()).isEqualTo(expectedWelcomeMessage);
     }
 

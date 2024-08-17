@@ -12,6 +12,6 @@ public abstract class RestConfig {
     public RestConfig(final String protocol,
                       final String ip) {
         this.protocol = protocol;
-        this.ip = ip;
+        this.ip       = ip;
     }
 }

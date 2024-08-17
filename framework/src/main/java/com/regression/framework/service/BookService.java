@@ -15,12 +15,13 @@ import org.springframework.stereotype.Service;
 @ScenarioScope
 public class BookService {
     private static final Logger LOG = LogManager.getLogger(BookService.class);
-    private final BookClient bookClient;
+
+    private final BookClient   bookClient;
     private final FakerService fakerService;
 
     public BookService(final BookClient bookClient,
                        final FakerService fakerService) {
-        this.bookClient = bookClient;
+        this.bookClient   = bookClient;
         this.fakerService = fakerService;
     }
 

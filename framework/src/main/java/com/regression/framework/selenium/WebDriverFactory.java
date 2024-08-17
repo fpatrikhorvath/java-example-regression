@@ -15,8 +15,9 @@ import org.springframework.stereotype.Component;
 @ScenarioScope
 public class WebDriverFactory {
     private static final Logger logger = LogManager.getLogger(WebDriverFactory.class);
-    private static WebDriver driver;
-    private final SeleniumConfig seleniumConfig;
+
+    private static WebDriver      driver;
+    private final  SeleniumConfig seleniumConfig;
 
     public WebDriverFactory(final SeleniumConfig seleniumConfig) {
         this.seleniumConfig = seleniumConfig;

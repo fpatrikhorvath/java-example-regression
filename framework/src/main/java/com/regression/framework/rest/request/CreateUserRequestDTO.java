@@ -8,9 +8,8 @@ import java.util.Objects;
 
 public class CreateUserRequestDTO {
 
-    protected String name;
-
-    protected String email;
+    protected String     name;
+    protected String     email;
     protected StatusEnum status;
 
     public CreateUserRequestDTO() {

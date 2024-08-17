@@ -15,10 +15,11 @@ import org.springframework.util.StringUtils;
 @ScenarioScope
 public class UserClient implements IUserClient {
     private static final String CREATE_USER_PATH = "/users";
-    private static final String GET_USER_PATH = "/users";
+    private static final String GET_USER_PATH    = "/users";
     private static final String DELETE_USER_PATH = "/users/{userId}";
+
     private final UserLayerConfig userLayerConfig;
-    private RestClient restClient;
+    private final RestClient      restClient;
 
     public UserClient(final UserLayerConfig userLayerConfig) {
         this.userLayerConfig = userLayerConfig;

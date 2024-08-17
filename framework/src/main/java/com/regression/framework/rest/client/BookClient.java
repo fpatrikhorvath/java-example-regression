@@ -14,11 +14,12 @@ import org.springframework.util.StringUtils;
 @Service
 @ScenarioScope
 public class BookClient implements IBookClient {
-    private static final String GET_BOOK_PATH = "/users/{userId}/books";
-    private static final String POST_BOOK_PATH = "/users/{userId}/books";
+    private static final String GET_BOOK_PATH    = "/users/{userId}/books";
+    private static final String POST_BOOK_PATH   = "/users/{userId}/books";
     private static final String DELETE_BOOK_PATH = "/users/{userId}/books/{bookId}";
+
     private final UserLayerConfig userLayerConfig;
-    private final RestClient restClient;
+    private final RestClient      restClient;
 
     public BookClient(final UserLayerConfig userLayerConfig) {
         this.userLayerConfig = userLayerConfig;

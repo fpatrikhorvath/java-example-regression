@@ -12,8 +12,9 @@ import java.util.HashMap;
 @Component
 @ScenarioScope
 public class ScenarioContext {
-    private final MapperService mapperService;
+    private final MapperService           mapperService;
     private final HashMap<String, Object> contextObjectMap = new HashMap<>();
+
     private ResponseErrorEnum response = null;
 
     public ScenarioContext(final MapperService mapperService) {

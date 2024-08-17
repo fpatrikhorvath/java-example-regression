@@ -9,6 +9,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 @Component
 public class WebDriverInitializationListener {
     private static final Logger logger = LogManager.getLogger(WebDriverInitializationListener.class);
+
     private static AtomicBoolean isInitialized = new AtomicBoolean(false);
 
     public static boolean isInitialized() {

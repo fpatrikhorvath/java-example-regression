@@ -17,8 +17,9 @@ import org.springframework.util.StringUtils;
 @ScenarioScope
 @Service
 public class RegisterPageHandler extends BasePageHandler implements IRegisterPageHandler {
-    private static final Logger LOG = LogManager.getLogger(RegisterPageHandler.class);
-    private final String PAGE_NAME = "register";
+    private static final Logger LOG       = LogManager.getLogger(RegisterPageHandler.class);
+    private static final String PAGE_NAME = "register";
+
     private final RegisterPage registerPage;
     private final FakerService fakerService;
 

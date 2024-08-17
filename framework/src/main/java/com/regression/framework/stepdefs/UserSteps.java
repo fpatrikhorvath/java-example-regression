@@ -32,7 +32,7 @@ public class UserSteps extends TestCore {
     @Given("(create )a new user of status {word} and store it as {word} -> {int}")
     public void createANewUserOfTypeAndStoreItAs
             (final String statusString, final String contextId, final int responseCode) {
-        final UserDTO user = getUserService().initContextUser(statusString);
+        final UserDTO  user     = getUserService().initContextUser(statusString);
         final Response response = getUserService().registerUser(user);
         assertThat(response.getStatusCode()).isEqualTo(responseCode);
 
@@ -46,7 +46,7 @@ public class UserSteps extends TestCore {
 
     @Then("verify that user {word} exists")
     public void verifyThatUserExists(final String contextId) {
-        final UserDTO expUser = (UserDTO) scenarioContext.getContextObject(contextId);
+        final UserDTO  expUser  = (UserDTO) scenarioContext.getContextObject(contextId);
         final Response response = getUserService().getUsers();
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK.value());
 
@@ -63,7 +63,7 @@ public class UserSteps extends TestCore {
 
     @When("delete user {word} -> {int}")
     public void deleteUser(final String contextId, final int responseCode) {
-        final UserDTO user = (UserDTO) scenarioContext.getContextObject(contextId);
+        final UserDTO  user     = (UserDTO) scenarioContext.getContextObject(contextId);
         final Response response = getUserService().deleteUser(user.getId());
         assertThat(response.getStatusCode()).isEqualTo(responseCode);
 
@@ -74,7 +74,7 @@ public class UserSteps extends TestCore {
 
     @Then("verify that user {word} does not exist")
     public void verifyThatUserDoesNotExist(final String contextId) {
-        final UserDTO user = (UserDTO) scenarioContext.getContextObject(contextId);
+        final UserDTO  user     = (UserDTO) scenarioContext.getContextObject(contextId);
         final Response response = getUserService().getUsers();
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK.value());
 

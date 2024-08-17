@@ -13,7 +13,8 @@ import org.springframework.util.StringUtils;
 @ScenarioScope
 @Service
 public class OpenAccountPageHandler extends BasePageHandler implements IOpenAccountPageHandler {
-    private final String PAGE_NAME = "openaccount";
+    private static final String PAGE_NAME = "openaccount";
+
     private final OpenAccountPage openAccountPage;
 
     protected OpenAccountPageHandler(final WebDriverWaitFactory webDriverWaitFactory,

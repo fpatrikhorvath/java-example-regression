@@ -12,7 +12,8 @@ import org.springframework.util.StringUtils;
 @ScenarioScope
 @Service
 public class IndexPageHandler extends BasePageHandler implements IIndexpagehandler {
-    private final String PAGE_NAME = "index";
+    private static final String PAGE_NAME = "index";
+
     private final IndexPage indexPage;
 
     protected IndexPageHandler(final WebDriverWaitFactory webDriverWaitFactory,

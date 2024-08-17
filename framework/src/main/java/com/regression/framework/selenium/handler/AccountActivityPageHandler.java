@@ -16,10 +16,11 @@ import org.springframework.util.StringUtils;
 @ScenarioScope
 @Service
 public class AccountActivityPageHandler extends BasePageHandler implements IAccountActivityPageHandler {
-    private static final Logger logger = LogManager.getLogger(AccountActivityPageHandler.class);
-    private final String PAGE_NAME = "openaccount";
+    private static final Logger logger    = LogManager.getLogger(AccountActivityPageHandler.class);
+    private static final String PAGE_NAME = "openaccount";
+
     private final AccountActivityPage activityPage;
-    private final ParserService parserService;
+    private final ParserService       parserService;
 
     protected AccountActivityPageHandler(final WebDriverWaitFactory webDriverWaitFactory,
                                          final WebDriverFactory driverFactory,
@@ -27,7 +28,7 @@ public class AccountActivityPageHandler extends BasePageHandler implements IAcco
                                          final AccountActivityPage activityPage,
                                          final ParserService parserService) {
         super(webDriverWaitFactory, driverFactory, parabankConfig);
-        this.activityPage = activityPage;
+        this.activityPage  = activityPage;
         this.parserService = parserService;
     }
 

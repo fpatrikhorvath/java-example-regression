@@ -31,8 +31,8 @@ public class BookSteps extends TestCore {
     @When("(create )a new book for user {word} and store it as {word} -> {int}")
     public void createANewBookForUserAndStoreItAs
             (final String userId, final String bookId, final int responseCode) {
-        final UserDTO user = (UserDTO) scenarioContext.getContextObject(userId);
-        final BookDTO book = getBookService().initContextBook(user.getId());
+        final UserDTO  user     = (UserDTO) scenarioContext.getContextObject(userId);
+        final BookDTO  book     = getBookService().initContextBook(user.getId());
         final Response response = getBookService().registerBook(book);
         assertThat(response.getStatusCode()).isEqualTo(responseCode);
 
@@ -49,8 +49,7 @@ public class BookSteps extends TestCore {
 
     @Then("verify that book {word} does not exist")
     public void verifyThatBookDoesNotExist(final String bookId) {
-        final BookDTO book = (BookDTO) scenarioContext.getContextObject(bookId);
-
+        final BookDTO  book     = (BookDTO) scenarioContext.getContextObject(bookId);
         final Response response = getBookService().getBooks(book);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK.value());
 
@@ -67,9 +66,9 @@ public class BookSteps extends TestCore {
 
     @Then("verify that book {word} exist")
     public void verifyThatBookExist(final String bookId) {
-        final BookDTO expBook = (BookDTO) scenarioContext.getContextObject(bookId);
-
+        final BookDTO  expBook  = (BookDTO) scenarioContext.getContextObject(bookId);
         final Response response = getBookService().getBooks(expBook);
+
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK.value());
 
         final List<BookDTO> bookDTOList = mapperService.mutateObjectList(response, BookDTO.class);

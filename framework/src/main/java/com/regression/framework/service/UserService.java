@@ -15,17 +15,17 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private static final Logger LOG = LogManager.getLogger(UserService.class);
 
-    private final UserClient userClient;
+    private final UserClient   userClient;
     private final FakerService fakerService;
 
     public UserService(final UserClient userClient,
                        final FakerService fakerService) {
-        this.userClient = userClient;
+        this.userClient   = userClient;
         this.fakerService = fakerService;
     }
 
     public UserDTO initContextUser(final String statusString) {
-        final UserDTO user = new UserDTO();
+        final UserDTO            user   = new UserDTO();
         final UserDTO.StatusEnum status = UserDTO.StatusEnum.valueOf(statusString);
         user.setName(fakerService.name().fullName());
         user.setEmail(fakerService.name().username() + "@gmail.com");
@@ -36,7 +36,7 @@ public class UserService {
     }
 
     public Response registerUser(final UserDTO user) {
-        final CreateUserRequestDTO body = new CreateUserRequestDTO();
+        final CreateUserRequestDTO            body   = new CreateUserRequestDTO();
         final CreateUserRequestDTO.StatusEnum status = CreateUserRequestDTO.StatusEnum.valueOf(user.getStatus().toString());
         body.setName(user.getName());
         body.setEmail(user.getEmail());

@@ -12,15 +12,15 @@ import org.springframework.stereotype.Service;
 @Service
 public abstract class BasePageHandler {
     protected final WebDriverWaitFactory driverWaitFactory;
-    protected final WebDriverFactory driverFactory;
-    protected final ParabankConfig parabankConfig;
+    protected final WebDriverFactory     driverFactory;
+    protected final ParabankConfig       parabankConfig;
 
     protected BasePageHandler(final WebDriverWaitFactory webDriverWaitFactory,
                               final WebDriverFactory driverFactory,
                               final ParabankConfig parabankConfig) {
         this.driverWaitFactory = webDriverWaitFactory;
-        this.driverFactory = driverFactory;
-        this.parabankConfig = parabankConfig;
+        this.driverFactory     = driverFactory;
+        this.parabankConfig    = parabankConfig;
     }
 
     protected Wait<WebDriver> defaultWaitFor() {

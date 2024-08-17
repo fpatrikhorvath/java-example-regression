@@ -13,8 +13,9 @@ import org.springframework.stereotype.Service;
 @ScenarioScope
 @Service
 public class OverviewPageHandler extends BasePageHandler implements IOverviewPageHandler {
-    private static final Logger LOG = LogManager.getLogger(OverviewPageHandler.class);
-    private final String PAGE_NAME = "register";
+    private static final Logger LOG       = LogManager.getLogger(OverviewPageHandler.class);
+    private static final String PAGE_NAME = "register";
+
     private final OverviewPage overviewPage;
 
     protected OverviewPageHandler(final WebDriverWaitFactory webDriverWaitFactory,
