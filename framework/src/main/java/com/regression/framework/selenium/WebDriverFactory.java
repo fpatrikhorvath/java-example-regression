@@ -15,8 +15,9 @@ import org.springframework.stereotype.Component;
 @ScenarioScope
 public class WebDriverFactory {
     private static final Logger logger = LogManager.getLogger(WebDriverFactory.class);
-    private static WebDriver driver;
-    private final SeleniumConfig seleniumConfig;
+
+    private static WebDriver      driver;
+    private final  SeleniumConfig seleniumConfig;
 
     public WebDriverFactory(final SeleniumConfig seleniumConfig) {
         this.seleniumConfig = seleniumConfig;
@@ -36,7 +37,7 @@ public class WebDriverFactory {
     }
 
     private ChromeDriver initChromeDriver() {
-        ChromeOptions options = new ChromeOptions();
+        final ChromeOptions options = new ChromeOptions();
 
         if (seleniumConfig.isHeadless()) {
             options.addArguments("--headless");
@@ -46,7 +47,7 @@ public class WebDriverFactory {
     }
 
     private FirefoxDriver initFirefoxDriver() {
-        FirefoxOptions options = new FirefoxOptions();
+        final FirefoxOptions options = new FirefoxOptions();
 
         if (seleniumConfig.isHeadless()) {
             options.addArguments("--headless");

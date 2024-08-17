@@ -7,10 +7,10 @@ import java.util.Objects;
 
 public class UserDTO {
 
-    protected StatusEnum status;
-    private Long id = null;
-    private String name;
-    private String email;
+    private StatusEnum status;
+    private   Long       id = null;
+    private   String     name;
+    private   String     email;
 
     /**
      * Constructor

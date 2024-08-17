@@ -7,22 +7,22 @@ import org.springframework.stereotype.Service;
 @ScenarioScope
 @Service
 public class ParabankPageStore {
-    private final IndexPageHandler indexPageHandler;
-    private final RegisterPageHandler registerPageHandler;
-    private final OverviewPageHandler overviewPageHandler;
+    private final IndexPageHandler           indexPageHandler;
+    private final RegisterPageHandler        registerPageHandler;
+    private final OverviewPageHandler        overviewPageHandler;
     private final AccountActivityPageHandler accountActivityPageHandler;
-    private final OpenAccountPageHandler openAccountPageHandler;
+    private final OpenAccountPageHandler     openAccountPageHandler;
 
     public ParabankPageStore(final IndexPageHandler loginPageHandler,
                              final RegisterPageHandler registerPageHandler,
                              final OverviewPageHandler overviewPageHandler,
                              final AccountActivityPageHandler accountActivityPageHandler,
                              final OpenAccountPageHandler openAccountPageHandler) {
-        this.indexPageHandler = loginPageHandler;
-        this.registerPageHandler = registerPageHandler;
-        this.overviewPageHandler = overviewPageHandler;
+        this.indexPageHandler           = loginPageHandler;
+        this.registerPageHandler        = registerPageHandler;
+        this.overviewPageHandler        = overviewPageHandler;
         this.accountActivityPageHandler = accountActivityPageHandler;
-        this.openAccountPageHandler = openAccountPageHandler;
+        this.openAccountPageHandler     = openAccountPageHandler;
     }
 
     public IndexPageHandler getIndexPageHandler() {

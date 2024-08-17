@@ -13,16 +13,17 @@ import org.springframework.http.HttpHeaders;
 
 public class RestClient {
     private static final Logger logger = LogManager.getLogger(RestClient.class);
-    private final String url;
+
+    private final String               url;
     private final RequestSpecification request;
-    private final HttpHeaders headers = new HttpHeaders();
-    private final ObjectMapper mapper = new ObjectMapper().findAndRegisterModules();
+    private final HttpHeaders          headers = new HttpHeaders();
+    private final ObjectMapper         mapper  = new ObjectMapper().findAndRegisterModules();
 
     public RestClient(final String url, final HttpHeaders headers) {
         headers.forEach(this.headers::addAll);
 
         this.url = url;
-        request = RestAssured
+        request  = RestAssured
                 .given()
                 .headers(headers)
                 .baseUri(url);

@@ -20,7 +20,7 @@ public class IndexPageSteps extends TestCore {
 
     @When("I log in as {word}")
     public void iLogInAs(final String identifier) {
-        ContextUser user = (ContextUser) scenarioContext.getContextObject(identifier);
+        final ContextUser user = (ContextUser) scenarioContext.getContextObject(identifier);
         getIndexPageHandler().login(user.getUsername(), user.getPassword());
     }
 

@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public class ContextAccount {
-    private long id;
+
     private AccountType accountType;
-    private double balance;
-    private double available;
+    private long        id;
+    private double      balance;
+    private double      available;
 
     public ContextAccount() {
     }

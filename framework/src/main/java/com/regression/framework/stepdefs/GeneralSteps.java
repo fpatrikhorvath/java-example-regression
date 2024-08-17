@@ -21,7 +21,7 @@ public class GeneralSteps extends TestCore {
 
     @Then("the response has {} error")
     public void theResponseHasError(final ResponseErrorEnum expectedResponseMessage) {
-        ResponseErrorEnum actualResponseMessage = scenarioContext.getResponse();
+        final ResponseErrorEnum actualResponseMessage = scenarioContext.getResponse();
         LOG.info("Error response: {}", actualResponseMessage);
         assertEquals(expectedResponseMessage, actualResponseMessage);
     }

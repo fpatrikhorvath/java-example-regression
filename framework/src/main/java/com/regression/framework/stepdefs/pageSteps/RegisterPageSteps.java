@@ -26,14 +26,14 @@ public class RegisterPageSteps extends TestCore {
 
     @Given("I sign up with correct credentials and store it as {word}")
     public void iSignUpWithCorrectCredentialsAndStoreItAs(final String identifier) {
-        ContextUser user = getRegisterPageHandler().initContextUser();
+        final ContextUser user = getRegisterPageHandler().initContextUser();
         getRegisterPageHandler().fillRegisterForm(user);
         scenarioContext.storeContextObject(identifier, user);
     }
 
     @Given("I sign up without {word} and store it as {word}")
     public void iSignUpWithoutAndStoreItAs(final String without, final String identifier) {
-        ContextUser user = getRegisterPageHandler().initContextUser();
+        final ContextUser user = getRegisterPageHandler().initContextUser();
 
         switch (without) {
             case "username" -> user.setUsername("");
@@ -54,8 +54,8 @@ public class RegisterPageSteps extends TestCore {
 
     @Then("verify that the user {word} is registered")
     public void verifyThatTheUserIsRegistered(final String identifier) {
-        ContextUser user = (ContextUser) scenarioContext.getContextObject(identifier);
-        String expectedWelcomeMessage = "Welcome ".concat(user.getUsername());
+        final ContextUser user                   = (ContextUser) scenarioContext.getContextObject(identifier);
+        final String      expectedWelcomeMessage = "Welcome ".concat(user.getUsername());
         assertThat(getRegisterPageHandler().getWelcomeMessage()).isEqualTo(expectedWelcomeMessage);
     }
 

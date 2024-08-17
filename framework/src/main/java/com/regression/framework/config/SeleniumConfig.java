@@ -6,16 +6,16 @@ import static io.cucumber.spring.CucumberTestContext.SCOPE_CUCUMBER_GLUE;
 
 @Scope(SCOPE_CUCUMBER_GLUE)
 public class SeleniumConfig {
-    private final String browserType;
+    private final String  browserType;
     private final boolean isHeadless;
-    private final long timeout;
+    private final long    timeout;
 
     public SeleniumConfig(final String browserType,
                           final boolean isHeadless,
                           final long timeout) {
         this.browserType = browserType;
-        this.isHeadless = isHeadless;
-        this.timeout = timeout;
+        this.isHeadless  = isHeadless;
+        this.timeout     = timeout;
     }
 
     public String getBrowserType() {
